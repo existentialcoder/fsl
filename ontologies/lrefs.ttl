@@ -1,0 +1,80 @@
+@prefix : <http://www.softlang.org/ontologies/lrefs#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix tbox: <http://www.softlang.org/ontologies/tbox#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://www.softlang.org/ontologies/lrefs> a owl:Ontology ;
+    rdfs:comment "Collection of literature references"@en .
+
+:Bezivin2006MDETechnicalSpace a tbox:LiteratureReference,
+        owl:NamedIndividual ;
+    rdfs:label "Bézivin 2006"@en ;
+    tbox:hasAuthorString "Jean Bézivin" ;
+    tbox:hasBibtexKey "Bezivin2006MDETechnicalSpace" ;
+    tbox:hasBooktitle "Generative and Transformational Techniques in Software Engineering" ;
+    tbox:hasDOI "10.1007/11877028_2" ;
+    tbox:hasEntryType "incollection" ;
+    tbox:hasInclusionRoleComment "Interprets model-driven engineering as a technological space, illustrating how a space organizes languages, metamodels, and transformations." ;
+    tbox:hasPages "36--64" ;
+    tbox:hasPublicationYear "2006"^^xsd:gYear ;
+    tbox:hasPublisher "Springer" ;
+    tbox:hasSeries "Lecture Notes in Computer Science" ;
+    tbox:hasTitle "Model Driven Engineering: An Emerging Technical Space" ;
+    tbox:hasVolume "4143" .
+
+:FavreLaemmelVaranovich2012LinguisticArchitecture a tbox:LiteratureReference,
+        owl:NamedIndividual ;
+    rdfs:label "Favre, Lämmel, and Varanovich 2012"@en ;
+    tbox:hasAuthorString "Jean-Marie Favre and Ralf Lämmel and Andrei Varanovich" ;
+    tbox:hasBibtexKey "FavreLaemmelVaranovich2012LinguisticArchitecture" ;
+    tbox:hasBooktitle "MODELS 2012" ;
+    tbox:hasDOI "10.1007/978-3-642-33666-9_11" ;
+    tbox:hasEntryType "inproceedings" ;
+    tbox:hasInclusionRoleComment "Models the linguistic architecture of software products, strengthening the megamodeling perspective for relating languages, artifacts, and technological spaces." ;
+    tbox:hasPages "151--167" ;
+    tbox:hasPublicationYear "2012"^^xsd:gYear ;
+    tbox:hasPublisher "Springer" ;
+    tbox:hasSeries "Lecture Notes in Computer Science" ;
+    tbox:hasTitle "Modeling the Linguistic Architecture of Software Products" .
+
+:FavreNguyen2004MegamodelEvolution a tbox:LiteratureReference,
+        owl:NamedIndividual ;
+    rdfs:label "Favre and Nguyen 2004"@en ;
+    tbox:hasAuthorString "Jean-Marie Favre and Tam Nguyen" ;
+    tbox:hasBibtexKey "FavreNguyen2004MegamodelEvolution" ;
+    tbox:hasBooktitle "Proceedings of the International Workshop on Software Evolution through Transformations (SETra)" ;
+    tbox:hasEntryType "inproceedings" ;
+    tbox:hasInclusionRoleComment "Introduces megamodeling, a framework for modeling languages, artifacts, and transformations; provides the structural basis for representing technological spaces and their interconnections." ;
+    tbox:hasPublicationYear "2004"^^xsd:gYear ;
+    tbox:hasTitle "Towards a Megamodel to Model Software Evolution Through Transformations" ;
+    tbox:hasURL "https://www.researchgate.net/publication/220369017_Towards_a_Megamodel_to_Model_Software_Evolution_Through_Transformations"^^xsd:anyURI .
+
+:KlintLaemmelVerhoef2005Grammarware a tbox:LiteratureReference,
+        owl:NamedIndividual ;
+    rdfs:label "Klint, Lämmel, and Verhoef 2005"@en ;
+    tbox:hasAuthorString "Paul Klint and Ralf Lämmel and Chris Verhoef" ;
+    tbox:hasBibtexKey "KlintLaemmelVerhoef2005Grammarware" ;
+    tbox:hasDOI "10.1145/1072997.1073000" ;
+    tbox:hasEntryType "article" ;
+    tbox:hasInclusionRoleComment "Establishes grammarware as a coherent engineering ecosystem, providing a concrete example of a technological space in practice." ;
+    tbox:hasJournal "ACM Transactions on Software Engineering and Methodology" ;
+    tbox:hasNumber "3" ;
+    tbox:hasPages "331--380" ;
+    tbox:hasPublicationYear "2005"^^xsd:gYear ;
+    tbox:hasTitle "Toward an Engineering Discipline for Grammarware" ;
+    tbox:hasURL "https://doi.org/10.1145/1072997.1073000"^^xsd:anyURI ;
+    tbox:hasVolume "14" .
+
+:KurtevBezivinAksit2002TechnologicalSpaces a tbox:LiteratureReference,
+        owl:NamedIndividual ;
+    rdfs:label "Kurtev, Bézivin, and Aksit 2002"@en ;
+    tbox:hasAuthorString "Ivan Kurtev and Jean Bézivin and Mehmet Aksit" ;
+    tbox:hasBibtexKey "KurtevBezivinAksit2002TechnologicalSpaces" ;
+    tbox:hasBooktitle "Proceedings of the Federated Conferences CoopIS, DOA, and ODBASE 2002, Industrial Track" ;
+    tbox:hasEntryType "inproceedings" ;
+    tbox:hasInclusionRoleComment "Introduces the concept of technological spaces as ecosystems of related languages, artifacts, tools, and transformations." ;
+    tbox:hasPublicationYear "2002"^^xsd:gYear ;
+    tbox:hasTitle "Technological Spaces: An Initial Appraisal" ;
+    tbox:hasURL "https://www.researchgate.net/profile/Ivan-Kurtev/publication/228580557_Technological_Spaces_An_Initial_Appraisal/links/0fcfd507dd6e6aab8a000000/Technological-Spaces-An-Initial-Appraisal.pdf"^^xsd:anyURI .
+

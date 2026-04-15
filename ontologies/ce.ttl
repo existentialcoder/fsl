@@ -1,0 +1,252 @@
+@prefix ae: <http://www.softlang.org/ontologies/ae#> .
+@prefix : <http://www.softlang.org/ontologies/ce#> .
+@prefix lrefs: <http://www.softlang.org/ontologies/lrefs#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix tbox: <http://www.softlang.org/ontologies/tbox#> .
+@prefix te: <http://www.softlang.org/ontologies/te#> .
+
+<http://www.softlang.org/ontologies/ce> a owl:Ontology ;
+    rdfs:comment "Sub-ontology / ABox for conceptual entities"@en ;
+    owl:imports <http://www.softlang.org/ontologies/tbox> .
+
+:APIware a :TechnologicalSpace,
+        tbox:ConceptualEntity,
+        owl:NamedIndividual ;
+    rdfs:label "APIware"@en ;
+    tbox:hasArtifactKind ae:APIDescriptionArtifact ;
+    tbox:hasToolKind te:APIWorkbench,
+        te:TransformationEngine,
+        te:Validator ;
+    rdfs:comment "technological space centered on interface descriptions, service contracts, API documentation, and contract-oriented tooling"@en .
+
+:CC a :SubjectArea,
+        tbox:ConceptualEntity,
+        owl:NamedIndividual ;
+    rdfs:label "Compiler Construction"@en ;
+    rdfs:comment "area concerned with the design and implementation of compilers"@en ;
+    owl:sameAs <https://en.wikipedia.org/wiki/Compiler#Compiler_construction> .
+
+:CL a :SubjectArea,
+        tbox:ConceptualEntity,
+        owl:NamedIndividual ;
+    rdfs:label "Computational Linguistics"@en ;
+    rdfs:comment "area concerned with computational models and processing of natural language"@en ;
+    owl:sameAs <https://en.wikipedia.org/wiki/Computational_linguistics> .
+
+:FM a :SubjectArea,
+        tbox:ConceptualEntity,
+        owl:NamedIndividual ;
+    rdfs:label "Formal Methods"@en ;
+    rdfs:comment "area concerned with mathematically rigorous methods for specification, development, and verification"@en ;
+    owl:sameAs <https://en.wikipedia.org/wiki/Formal_methods> .
+
+:Grammarware a :TechnologicalSpace,
+        tbox:ConceptualEntity,
+        owl:NamedIndividual ;
+    rdfs:label "Grammarware"@en ;
+    tbox:hasArtifactKind ae:GrammarArtifact ;
+    tbox:hasLiteratureReference lrefs:KlintLaemmelVerhoef2005Grammarware ;
+    tbox:hasToolKind te:GrammarAnalyzer,
+        te:GrammarTransformationEngine,
+        te:ParserGenerator ;
+    rdfs:comment "technological space centered on grammars, grammar formalisms, parsing, grammar analysis, and grammar transformation"@en .
+
+:Graphware a :TechnologicalSpace,
+        tbox:ConceptualEntity,
+        owl:NamedIndividual ;
+    rdfs:label "Graphware"@en ;
+    tbox:hasArtifactKind ae:GraphQueryArtifact,
+        ae:PropertyGraphArtifact ;
+    tbox:hasToolKind te:GraphDatabaseManagementSystem,
+        te:QueryProcessor,
+        te:TransformationEngine ;
+    rdfs:comment "technological space centered on graph-shaped data, graph querying, graph transformation, and graph databases"@en .
+
+:JSONware a :TechnologicalSpace,
+        tbox:ConceptualEntity,
+        owl:NamedIndividual ;
+    rdfs:label "JSONware"@en ;
+    tbox:hasArtifactKind ae:JSONDocumentArtifact,
+        ae:JSONSchemaArtifact ;
+    tbox:hasToolKind te:JSONProcessor,
+        te:QueryProcessor,
+        te:TransformationEngine,
+        te:Validator ;
+    rdfs:comment "technological space centered on JSON documents, JSON schemas, JSON querying, JSON transformation, and validation"@en .
+
+:KR a :SubjectArea,
+        tbox:ConceptualEntity,
+        owl:NamedIndividual ;
+    rdfs:label "Knowledge Representation & Reasoning"@en ;
+    rdfs:comment "area concerned with representing knowledge and supporting automated reasoning"@en ;
+    owl:sameAs <https://en.wikipedia.org/wiki/Knowledge_representation_and_reasoning> .
+
+:Logicware a :TechnologicalSpace,
+        tbox:ConceptualEntity,
+        owl:NamedIndividual ;
+    rdfs:label "Logicware"@en ;
+    tbox:hasArtifactKind ae:LogicProgramArtifact ;
+    tbox:hasLiteratureReference lrefs:FavreLaemmelVaranovich2012LinguisticArchitecture,
+        lrefs:KurtevBezivinAksit2002TechnologicalSpaces ;
+    tbox:hasToolKind te:LogicProgrammingSystem,
+        te:Reasoner ;
+    rdfs:comment "technological space centered on logic programs, logical theories, symbolic inference, and logic-oriented programming systems"@en .
+
+:MDE a :SubjectArea,
+        tbox:ConceptualEntity ;
+    rdfs:label "Model-driven engineering"@en ;
+    rdfs:comment "area concerned with the engineering of software systems through models, metamodels, model transformations, and related model-based techniques"@en ;
+    owl:sameAs <https://en.wikipedia.org/wiki/Model-driven_engineering> .
+
+:Markupware a :TechnologicalSpace,
+        tbox:ConceptualEntity,
+        owl:NamedIndividual ;
+    rdfs:label "Markupware"@en ;
+    tbox:hasArtifactKind ae:MarkupArtifact ;
+    tbox:hasLiteratureReference lrefs:KurtevBezivinAksit2002TechnologicalSpaces ;
+    tbox:hasToolKind te:MarkupProcessor,
+        te:TransformationEngine ;
+    rdfs:comment "technological space centered on markup artifacts, markup languages, markup transformation, and markup-aware processors"@en .
+
+:Modelware a :TechnologicalSpace,
+        tbox:ConceptualEntity,
+        owl:NamedIndividual ;
+    rdfs:label "Modelware"@en ;
+    tbox:hasArtifactKind ae:MetamodelArtifact,
+        ae:ModelArtifact ;
+    tbox:hasLiteratureReference lrefs:Bezivin2006MDETechnicalSpace ;
+    tbox:hasToolKind te:ModelTransformationEngine,
+        te:ModelValidator,
+        te:ModelingWorkbench ;
+    rdfs:comment "technological space centered on models, metamodels, model transformation, and model validation"@en .
+
+:NLP a :SubjectArea,
+        tbox:ConceptualEntity,
+        owl:NamedIndividual ;
+    rdfs:label "Natural Language Processing"@en ;
+    rdfs:comment "area concerned with computational techniques for analyzing and generating natural language"@en ;
+    owl:sameAs <https://en.wikipedia.org/wiki/Natural_language_processing> .
+
+:Ontoware a :TechnologicalSpace,
+        tbox:ConceptualEntity,
+        owl:NamedIndividual ;
+    rdfs:label "Ontoware"@en ;
+    tbox:hasArtifactKind ae:OntologyArtifact,
+        ae:RDFGraphArtifact,
+        ae:ShapeArtifact ;
+    tbox:hasLiteratureReference lrefs:FavreNguyen2004MegamodelEvolution ;
+    tbox:hasToolKind te:OntologyEditor,
+        te:QueryProcessor,
+        te:Reasoner,
+        te:TripleStore,
+        te:Validator ;
+    rdfs:comment "technological space centered on semantic data models, ontologies, semantic constraints, semantic queries, mappings, and reasoning"@en .
+
+:PLT a :SubjectArea,
+        tbox:ConceptualEntity,
+        owl:NamedIndividual ;
+    rdfs:label "Programming Language Theory"@en ;
+    rdfs:comment "area concerned with the formal study of programming languages and their properties"@en ;
+    owl:sameAs <https://en.wikipedia.org/wiki/Programming_language_theory> .
+
+:Programware a :TechnologicalSpace,
+        tbox:ConceptualEntity,
+        owl:NamedIndividual ;
+    rdfs:label "Programware"@en ;
+    tbox:hasArtifactKind ae:ProgramArtifact ;
+    tbox:hasToolKind te:Compiler,
+        te:Interpreter,
+        te:StaticAnalyzer ;
+    rdfs:comment "technological space centered on programs, programming languages, compilation, interpretation, and program analysis"@en .
+
+:Proofware a :TechnologicalSpace,
+        tbox:ConceptualEntity,
+        owl:NamedIndividual ;
+    rdfs:label "Proofware"@en ;
+    tbox:hasArtifactKind ae:ProofArtifact ;
+    tbox:hasLiteratureReference lrefs:FavreLaemmelVaranovich2012LinguisticArchitecture,
+        lrefs:KurtevBezivinAksit2002TechnologicalSpaces ;
+    tbox:hasToolKind te:ProofAssistant ;
+    rdfs:comment "technological space centered on formal proofs, proof languages, theorem provers, proof assistants, and mechanized reasoning"@en .
+
+:Ruleware a :TechnologicalSpace,
+        tbox:ConceptualEntity,
+        owl:NamedIndividual ;
+    rdfs:label "Ruleware"@en ;
+    tbox:hasArtifactKind ae:RuleArtifact ;
+    tbox:hasLiteratureReference lrefs:FavreLaemmelVaranovich2012LinguisticArchitecture,
+        lrefs:KurtevBezivinAksit2002TechnologicalSpaces ;
+    tbox:hasToolKind te:RuleEngine,
+        te:Validator ;
+    rdfs:comment "technological space centered on rule artifacts, rule languages, rule engines, and symbolic rule-based reasoning"@en .
+
+:SE a :SubjectArea,
+        tbox:ConceptualEntity,
+        owl:NamedIndividual ;
+    rdfs:label "Software Engineering"@en ;
+    rdfs:comment "area concerned with systematic methods for the development and maintenance of software"@en ;
+    owl:sameAs <https://en.wikipedia.org/wiki/Software_engineering> .
+
+:SLE a :SubjectArea,
+        tbox:ConceptualEntity,
+        owl:NamedIndividual ;
+    rdfs:label "Software Language Engineering"@en ;
+    rdfs:comment "area concerned with the engineering of software languages and related artifacts"@en ;
+    owl:sameAs <https://en.wikipedia.org/wiki/Language_engineering> .
+
+:SQLware a :TechnologicalSpace,
+        tbox:ConceptualEntity,
+        owl:NamedIndividual ;
+    rdfs:label "SQLware"@en ;
+    tbox:hasArtifactKind ae:RelationalDataArtifact,
+        ae:RelationalQueryArtifact,
+        ae:RelationalSchemaArtifact ;
+    tbox:hasToolKind te:QueryProcessor,
+        te:RelationalDatabaseManagementSystem,
+        te:Validator ;
+    rdfs:comment "technological space centered on relational schemas, relational data manipulation, querying, constraints, and database systems"@en .
+
+:TCS a :SubjectArea,
+        tbox:ConceptualEntity,
+        owl:NamedIndividual ;
+    rdfs:label "Theoretical Computer Science"@en ;
+    rdfs:comment "area concerned with the mathematical and theoretical foundations of computer science"@en ;
+    owl:sameAs <https://en.wikipedia.org/wiki/Theoretical_computer_science> .
+
+:XMLware a :TechnologicalSpace,
+        tbox:ConceptualEntity,
+        owl:NamedIndividual ;
+    rdfs:label "XMLware"@en ;
+    tbox:hasArtifactKind ae:XMLDocumentArtifact,
+        ae:XMLSchemaArtifact ;
+    tbox:hasToolKind te:QueryProcessor,
+        te:TransformationEngine,
+        te:Validator,
+        te:XMLProcessor ;
+    rdfs:comment "technological space centered on XML documents, XML schemas, XML querying, XML transformation, and XML processing"@en .
+
+:SubjectArea a tbox:ConceptualEntity ;
+    rdfs:label "Subject area"@en ;
+    rdfs:comment "research or application area relevant to the foundations of software languages and related disciplines"@en ;
+    rdfs:subClassOf tbox:ConceptualEntity,
+        tbox:Root .
+
+:TechnologicalSpace a tbox:ConceptualEntity ;
+    rdfs:label "Technological space"@en ;
+    tbox:hasLiteratureReference lrefs:Bezivin2006MDETechnicalSpace,
+        lrefs:FavreLaemmelVaranovich2012LinguisticArchitecture,
+        lrefs:FavreNguyen2004MegamodelEvolution,
+        lrefs:KlintLaemmelVerhoef2005Grammarware,
+        lrefs:KurtevBezivinAksit2002TechnologicalSpaces ;
+    rdfs:comment "Technological spaces are families of related software-language technologies that share characteristic artifact kinds, metalanguages, tools, conformance relations, skills, and communities of practice. A technological space is not just a single language or formalism, but a working context in which artifacts are defined, manipulated, queried, transformed, validated, exchanged, and executed according to characteristic principles. This class represents such ecosystems."@en ;
+    rdfs:subClassOf tbox:ConceptualEntity,
+        tbox:Root .
+
+[] a owl:AllDifferent ;
+    owl:distinctMembers ( :SLE :CC :PLT :TCS :SE :FM :KR :CL :NLP :MDE ) .
+
+[] a owl:AllDifferent ;
+    owl:distinctMembers ( :Grammarware :Modelware :Programware :XMLware :JSONware :SQLware :Ontoware :Graphware :APIware :Logicware :Ruleware :Proofware :Markupware ) .
+

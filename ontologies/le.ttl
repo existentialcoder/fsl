@@ -1,0 +1,695 @@
+@prefix ce: <http://www.softlang.org/ontologies/ce#> .
+@prefix fe: <http://www.softlang.org/ontologies/fe#> .
+@prefix : <http://www.softlang.org/ontologies/le#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix tbox: <http://www.softlang.org/ontologies/tbox#> .
+
+<http://www.softlang.org/ontologies/le> a owl:Ontology ;
+    rdfs:comment "Sub-ontology / ABox for software languages"@en ;
+    owl:imports <http://www.softlang.org/ontologies/tbox> .
+
+:ATL a :ModelTransformationLanguage,
+        tbox:LanguageEntity,
+        owl:NamedIndividual ;
+    rdfs:label "ATL"@en ;
+    tbox:hasArea ce:MDE,
+        ce:SE,
+        ce:SLE ;
+    tbox:hasSpace ce:Modelware ;
+    owl:sameAs <https://en.wikipedia.org/wiki/ATLAS_Transformation_Language> .
+
+:Coq a :ProofLanguage,
+        tbox:LanguageEntity,
+        owl:NamedIndividual ;
+    rdfs:label "Coq"@en ;
+    tbox:hasArea ce:FM,
+        ce:KR,
+        ce:SLE ;
+    tbox:hasSpace ce:Proofware ;
+    owl:sameAs <https://en.wikipedia.org/wiki/Coq> .
+
+:Cypher a :GraphQueryLanguage,
+        tbox:LanguageEntity,
+        owl:NamedIndividual ;
+    rdfs:label "Cypher"@en ;
+    tbox:hasArea ce:SE,
+        ce:SLE ;
+    tbox:hasSpace ce:Graphware ;
+    owl:sameAs <https://en.wikipedia.org/wiki/Cypher_(query_language)> .
+
+:Datalog a :LogicProgrammingLanguage,
+        :RuleLanguage,
+        tbox:LanguageEntity,
+        owl:NamedIndividual ;
+    rdfs:label "Datalog"@en ;
+    tbox:hasArea ce:KR,
+        ce:SE,
+        ce:SLE ;
+    tbox:hasSpace ce:Logicware,
+        ce:Ruleware ;
+    owl:sameAs <https://en.wikipedia.org/wiki/Datalog> .
+
+:EBNF a :GrammarMetalanguage,
+        tbox:LanguageEntity,
+        owl:NamedIndividual ;
+    rdfs:label "EBNF"@en ;
+    tbox:extends :BNF ;
+    tbox:hasArea ce:CC,
+        ce:SLE,
+        ce:TCS ;
+    tbox:hasSpace ce:Grammarware ;
+    rdfs:comment "extended grammar metalanguage for expressing grammars"@en ;
+    owl:sameAs <https://en.wikipedia.org/wiki/Extended_Backus%E2%80%93Naur_form> .
+
+:Ecore a :MetamodelingLanguage,
+        tbox:LanguageEntity,
+        owl:NamedIndividual ;
+    rdfs:label "Ecore"@en ;
+    tbox:hasArea ce:MDE,
+        ce:SE,
+        ce:SLE ;
+    tbox:hasSpace ce:Modelware ;
+    owl:sameAs <https://en.wikipedia.org/wiki/Eclipse_Modeling_Framework> .
+
+:ExtendedBackusNaurForm a :GrammarMetalanguage,
+        tbox:LanguageEntity,
+        owl:NamedIndividual ;
+    rdfs:label "Extended Backus-Naur form"@en ;
+    tbox:extends :BackusNaurForm ;
+    tbox:hasArea ce:CC,
+        ce:SLE ;
+    tbox:hasSpace ce:Grammarware ;
+    tbox:serves fe:ConcreteSyntaxDefinitionApproach ;
+    rdfs:comment "metalanguage for grammar notation"@en ;
+    owl:sameAs <https://en.wikipedia.org/wiki/Extended_Backus%E2%80%93Naur_form> .
+
+:GrammarTransformationLanguage a tbox:LanguageEntity ;
+    rdfs:label "Grammar transformation language"@en ;
+    tbox:hasArea ce:CC,
+        ce:SLE ;
+    tbox:hasSpace ce:Grammarware ;
+    rdfs:seeAlso <https://en.wikipedia.org/wiki/Program_transformation> ;
+    rdfs:subClassOf :TransformationLanguage .
+
+:GraphQLSchema a :InterfaceDescriptionLanguage,
+        tbox:LanguageEntity,
+        owl:NamedIndividual ;
+    rdfs:label "GraphQL schema language"@en ;
+    tbox:hasArea ce:SE,
+        ce:SLE ;
+    tbox:hasSpace ce:APIware ;
+    owl:sameAs <https://en.wikipedia.org/wiki/GraphQL> .
+
+:GraphQueryLanguageStandard a :QueryLanguage,
+        tbox:LanguageEntity,
+        owl:NamedIndividual ;
+    rdfs:label "Graph Query Language"@en ;
+    tbox:hasArea ce:SE,
+        ce:SLE ;
+    tbox:hasSpace ce:Graphware ;
+    rdfs:comment "standardized query language for property graphs"@en ;
+    owl:sameAs <https://en.wikipedia.org/wiki/Graph_Query_Language> .
+
+:Gremlin a :QueryLanguage,
+        tbox:LanguageEntity,
+        owl:NamedIndividual ;
+    rdfs:label "Gremlin"@en ;
+    tbox:hasArea ce:SE,
+        ce:SLE ;
+    tbox:hasSpace ce:Graphware ;
+    rdfs:comment "graph traversal and query language for graph databases and graph processors"@en ;
+    owl:sameAs <https://en.wikipedia.org/wiki/Gremlin_(query_language)> .
+
+:HTML a :MarkupLanguage,
+        tbox:LanguageEntity,
+        owl:NamedIndividual ;
+    rdfs:label "HTML"@en ;
+    tbox:hasArea ce:SE,
+        ce:SLE ;
+    tbox:hasSpace ce:Markupware ;
+    owl:sameAs <https://en.wikipedia.org/wiki/HTML> .
+
+:JSON a tbox:LanguageEntity,
+        tbox:SoftwareLanguage,
+        owl:NamedIndividual ;
+    rdfs:label "JSON"@en ;
+    tbox:hasArea ce:SE,
+        ce:SLE ;
+    tbox:hasSpace ce:JSONware ;
+    rdfs:comment "lightweight data-interchange language"@en ;
+    owl:sameAs <https://en.wikipedia.org/wiki/JSON> .
+
+:JSONQueryLanguage a tbox:LanguageEntity ;
+    rdfs:label "JSON query language"@en ;
+    tbox:hasArea ce:SE,
+        ce:SLE ;
+    tbox:hasSpace ce:JSONware ;
+    rdfs:seeAlso <https://en.wikipedia.org/wiki/JSONPath> ;
+    rdfs:subClassOf :QueryLanguage .
+
+:JSONSchema a :JSONSchemaLanguage,
+        tbox:LanguageEntity,
+        owl:NamedIndividual ;
+    rdfs:label "JSON Schema"@en ;
+    tbox:hasArea ce:SE,
+        ce:SLE ;
+    tbox:hasSpace ce:JSONware ;
+    owl:sameAs <https://en.wikipedia.org/wiki/JSON_Schema> .
+
+:Lean a :ProofLanguage,
+        tbox:LanguageEntity,
+        owl:NamedIndividual ;
+    rdfs:label "Lean"@en ;
+    tbox:hasArea ce:FM,
+        ce:KR,
+        ce:SLE ;
+    tbox:hasSpace ce:Proofware ;
+    owl:sameAs <https://en.wikipedia.org/wiki/Lean_(proof_assistant)> .
+
+:MOF a :MetamodelingLanguage,
+        tbox:LanguageEntity,
+        owl:NamedIndividual ;
+    rdfs:label "MOF"@en ;
+    tbox:hasArea ce:MDE,
+        ce:SE,
+        ce:SLE ;
+    tbox:hasSpace ce:Modelware ;
+    owl:sameAs <https://en.wikipedia.org/wiki/Meta-Object_Facility> .
+
+:MappingLanguage a tbox:LanguageEntity ;
+    rdfs:label "Mapping language"@en ;
+    tbox:hasArea ce:KR,
+        ce:SE,
+        ce:SLE ;
+    tbox:hasSpace ce:Ontoware ;
+    rdfs:seeAlso <https://en.wikipedia.org/wiki/Data_mapping> ;
+    rdfs:subClassOf tbox:SoftwareLanguage .
+
+:Markdown a :MarkupLanguage,
+        tbox:LanguageEntity,
+        owl:NamedIndividual ;
+    rdfs:label "Markdown"@en ;
+    tbox:hasArea ce:SE,
+        ce:SLE ;
+    tbox:hasSpace ce:Markupware ;
+    owl:sameAs <https://en.wikipedia.org/wiki/Markdown> .
+
+:OCL a :ConstraintLanguage,
+        :QueryLanguage,
+        tbox:LanguageEntity,
+        owl:NamedIndividual ;
+    rdfs:label "OCL"@en ;
+    tbox:hasArea ce:MDE,
+        ce:SE,
+        ce:SLE ;
+    tbox:hasSpace ce:Modelware ;
+    owl:sameAs <https://en.wikipedia.org/wiki/Object_Constraint_Language> .
+
+:OWL a :OntologyLanguage,
+        tbox:LanguageEntity,
+        owl:NamedIndividual ;
+    rdfs:label "OWL"@en ;
+    tbox:hasArea ce:KR,
+        ce:SLE ;
+    tbox:hasSpace ce:Ontoware ;
+    rdfs:comment "ontology language for expressing classes, properties, and axioms over semantic data"@en ;
+    owl:sameAs <https://en.wikipedia.org/wiki/Web_Ontology_Language> .
+
+:OpenAPI a :InterfaceDescriptionLanguage,
+        tbox:LanguageEntity,
+        owl:NamedIndividual ;
+    rdfs:label "OpenAPI"@en ;
+    tbox:hasArea ce:SE,
+        ce:SLE ;
+    tbox:hasSpace ce:APIware ;
+    owl:sameAs <https://en.wikipedia.org/wiki/OpenAPI_Specification> .
+
+:PetriNet a :ModelingLanguage,
+        tbox:LanguageEntity,
+        owl:NamedIndividual ;
+    rdfs:label "Petri net"@en ;
+    tbox:hasArea ce:FM,
+        ce:MDE,
+        ce:SE,
+        ce:TCS ;
+    tbox:hasSpace ce:Modelware ;
+    rdfs:comment "mathematical modeling language for distributed systems"@en ;
+    owl:sameAs <https://en.wikipedia.org/wiki/Petri_net> .
+
+:ProgrammingLanguage a tbox:LanguageEntity ;
+    rdfs:label "Programming language"@en ;
+    tbox:hasArea ce:PLT,
+        ce:SE,
+        ce:SLE ;
+    tbox:hasSpace ce:Programware ;
+    rdfs:comment "software language for expressing executable or interpretable programs"@en ;
+    rdfs:seeAlso <https://en.wikipedia.org/wiki/Programming_language> ;
+    rdfs:subClassOf tbox:SoftwareLanguage .
+
+:Prolog a :LogicProgrammingLanguage,
+        tbox:LanguageEntity,
+        owl:NamedIndividual ;
+    rdfs:label "Prolog"@en ;
+    tbox:hasArea ce:FM,
+        ce:KR,
+        ce:SLE ;
+    tbox:hasSpace ce:Logicware ;
+    owl:sameAs <https://en.wikipedia.org/wiki/Prolog> .
+
+:PropertyGraphDataModelLanguage a tbox:LanguageEntity ;
+    rdfs:label "Property-graph data-model language"@en ;
+    tbox:hasArea ce:SE,
+        ce:SLE ;
+    tbox:hasSpace ce:Graphware ;
+    rdfs:comment "software language or data-model notation for property graphs"@en ;
+    rdfs:seeAlso <https://en.wikipedia.org/wiki/Property_graph> ;
+    rdfs:subClassOf tbox:SoftwareLanguage .
+
+:QVT a :ModelTransformationLanguage,
+        tbox:LanguageEntity,
+        owl:NamedIndividual ;
+    rdfs:label "QVT"@en ;
+    tbox:hasArea ce:MDE,
+        ce:SE,
+        ce:SLE ;
+    tbox:hasSpace ce:Modelware ;
+    owl:sameAs <https://en.wikipedia.org/wiki/QVT> .
+
+:RDF a :SemanticDataModelLanguage,
+        tbox:LanguageEntity,
+        owl:NamedIndividual ;
+    rdfs:label "RDF"@en ;
+    tbox:hasArea ce:KR,
+        ce:SLE ;
+    tbox:hasSpace ce:Ontoware ;
+    rdfs:comment "semantic data-model language based on triples and graphs"@en ;
+    owl:sameAs <https://en.wikipedia.org/wiki/Resource_Description_Framework> .
+
+:RDFS a :OntologyLanguage,
+        tbox:LanguageEntity,
+        owl:NamedIndividual ;
+    rdfs:label "RDFS"@en ;
+    tbox:hasArea ce:KR,
+        ce:SLE ;
+    tbox:hasSpace ce:Ontoware ;
+    rdfs:comment "ontology and vocabulary language for RDF-based semantic data"@en ;
+    owl:sameAs <https://en.wikipedia.org/wiki/RDF_Schema> .
+
+:RELAXNG a :XMLSchemaLanguage,
+        tbox:LanguageEntity,
+        owl:NamedIndividual ;
+    rdfs:label "RELAX NG"@en ;
+    tbox:hasArea ce:SE,
+        ce:SLE ;
+    tbox:hasSpace ce:XMLware ;
+    owl:sameAs <https://en.wikipedia.org/wiki/RELAX_NG> .
+
+:SHACL a :ConstraintLanguage,
+        tbox:LanguageEntity,
+        owl:NamedIndividual ;
+    rdfs:label "SHACL"@en ;
+    tbox:hasArea ce:KR,
+        ce:SLE ;
+    tbox:hasSpace ce:Ontoware ;
+    rdfs:comment "constraint language for RDF graphs"@en ;
+    owl:sameAs <https://en.wikipedia.org/wiki/Shapes_Constraint_Language> .
+
+:SPARQL a :SemanticQueryLanguage,
+        tbox:LanguageEntity,
+        owl:NamedIndividual ;
+    rdfs:label "SPARQL"@en ;
+    tbox:hasArea ce:KR,
+        ce:SLE ;
+    tbox:hasSpace ce:Ontoware ;
+    owl:sameAs <https://en.wikipedia.org/wiki/SPARQL> .
+
+:SWRL a :RuleLanguage,
+        tbox:LanguageEntity,
+        owl:NamedIndividual ;
+    rdfs:label "SWRL"@en ;
+    tbox:hasArea ce:KR,
+        ce:SLE ;
+    tbox:hasSpace ce:Ontoware,
+        ce:Ruleware ;
+    owl:sameAs <https://en.wikipedia.org/wiki/Semantic_Web_Rule_Language> .
+
+:ShEx a :ConstraintLanguage,
+        tbox:LanguageEntity,
+        owl:NamedIndividual ;
+    rdfs:label "ShEx"@en ;
+    tbox:hasArea ce:KR,
+        ce:SLE ;
+    tbox:hasSpace ce:Ontoware ;
+    rdfs:comment "shape-expression language for RDF validation"@en ;
+    owl:sameAs <https://en.wikipedia.org/wiki/Shape_Expressions> .
+
+:UMLStateMachine a :ModelingLanguage,
+        tbox:LanguageEntity,
+        owl:NamedIndividual ;
+    rdfs:label "UML state machine"@en ;
+    tbox:hasArea ce:FM,
+        ce:MDE,
+        ce:SE,
+        ce:SLE ;
+    tbox:hasSpace ce:Modelware ;
+    rdfs:comment "behavioral state machine notation in UML"@en ;
+    owl:sameAs <https://en.wikipedia.org/wiki/UML_state_machine> .
+
+:XML a tbox:LanguageEntity,
+        tbox:SoftwareLanguage,
+        owl:NamedIndividual ;
+    rdfs:label "XML"@en ;
+    tbox:hasArea ce:SE,
+        ce:SLE ;
+    tbox:hasSpace ce:XMLware ;
+    rdfs:comment "markup language for structured documents and data interchange"@en ;
+    owl:sameAs <https://en.wikipedia.org/wiki/XML> .
+
+:XMLSchema a :XMLSchemaLanguage,
+        tbox:LanguageEntity,
+        owl:NamedIndividual ;
+    rdfs:label "XML Schema"@en ;
+    tbox:hasArea ce:SE,
+        ce:SLE ;
+    tbox:hasSpace ce:XMLware ;
+    owl:sameAs <https://en.wikipedia.org/wiki/XML_Schema_(W3C)> .
+
+:XPath a :XMLQueryLanguage,
+        tbox:LanguageEntity,
+        owl:NamedIndividual ;
+    rdfs:label "XPath"@en ;
+    tbox:hasArea ce:SE,
+        ce:SLE ;
+    tbox:hasSpace ce:XMLware ;
+    owl:sameAs <https://en.wikipedia.org/wiki/XPath> .
+
+:XQuery a :XMLQueryLanguage,
+        tbox:LanguageEntity,
+        owl:NamedIndividual ;
+    rdfs:label "XQuery"@en ;
+    tbox:hasArea ce:SE,
+        ce:SLE ;
+    tbox:hasSpace ce:XMLware ;
+    owl:sameAs <https://en.wikipedia.org/wiki/XQuery> .
+
+:XSLT a :DocumentTransformationLanguage,
+        tbox:LanguageEntity,
+        owl:NamedIndividual ;
+    rdfs:label "XSLT"@en ;
+    tbox:hasArea ce:SE,
+        ce:SLE ;
+    tbox:hasSpace ce:XMLware ;
+    owl:sameAs <https://en.wikipedia.org/wiki/XSLT> .
+
+:BNF a :GrammarMetalanguage,
+        tbox:LanguageEntity,
+        owl:NamedIndividual ;
+    rdfs:label "BNF"@en ;
+    tbox:hasArea ce:CC,
+        ce:SLE,
+        ce:TCS ;
+    tbox:hasSpace ce:Grammarware ;
+    rdfs:comment "grammar metalanguage for expressing context-free grammars"@en ;
+    owl:sameAs <https://en.wikipedia.org/wiki/Backus%E2%80%93Naur_form> .
+
+:BackusNaurForm a :GrammarMetalanguage,
+        tbox:LanguageEntity,
+        owl:NamedIndividual ;
+    rdfs:label "Backus-Naur form"@en ;
+    tbox:hasArea ce:CC,
+        ce:SLE ;
+    tbox:hasSpace ce:Grammarware ;
+    tbox:serves fe:ConcreteSyntaxDefinitionApproach ;
+    rdfs:comment "metalanguage for expressing context-free grammars"@en ;
+    owl:sameAs <https://en.wikipedia.org/wiki/Backus%E2%80%93Naur_form> .
+
+:DataDefinitionLanguage a tbox:LanguageEntity ;
+    rdfs:label "Data definition language"@en ;
+    tbox:hasArea ce:SE,
+        ce:SLE ;
+    tbox:hasSpace ce:SQLware ;
+    rdfs:seeAlso <https://en.wikipedia.org/wiki/Data_definition_language> ;
+    rdfs:subClassOf tbox:SoftwareLanguage .
+
+:DataManipulationLanguage a tbox:LanguageEntity ;
+    rdfs:label "Data manipulation language"@en ;
+    tbox:hasArea ce:SE,
+        ce:SLE ;
+    tbox:hasSpace ce:SQLware ;
+    rdfs:seeAlso <https://en.wikipedia.org/wiki/Data_manipulation_language> ;
+    rdfs:subClassOf tbox:SoftwareLanguage .
+
+:DocumentTransformationLanguage a tbox:LanguageEntity ;
+    rdfs:label "Document transformation language"@en ;
+    tbox:hasArea ce:SE,
+        ce:SLE ;
+    tbox:hasSpace ce:JSONware,
+        ce:XMLware ;
+    rdfs:seeAlso <https://en.wikipedia.org/wiki/XSLT> ;
+    rdfs:subClassOf :TransformationLanguage .
+
+:GraphQueryLanguage a tbox:LanguageEntity ;
+    rdfs:label "Graph query language"@en ;
+    tbox:hasArea ce:SE,
+        ce:SLE ;
+    tbox:hasSpace ce:Graphware ;
+    rdfs:seeAlso <https://en.wikipedia.org/wiki/Graph_query_language> ;
+    rdfs:subClassOf :QueryLanguage .
+
+:JSONSchemaLanguage a tbox:LanguageEntity ;
+    rdfs:label "JSON schema language"@en ;
+    tbox:hasArea ce:SE,
+        ce:SLE ;
+    tbox:hasSpace ce:JSONware ;
+    rdfs:comment "schema language for JSON documents"@en ;
+    rdfs:seeAlso <https://en.wikipedia.org/wiki/JSON_Schema> ;
+    rdfs:subClassOf :SchemaLanguage .
+
+:RelationalQueryLanguage a tbox:LanguageEntity ;
+    rdfs:label "Relational query language"@en ;
+    tbox:hasArea ce:SE,
+        ce:SLE ;
+    tbox:hasSpace ce:SQLware ;
+    rdfs:seeAlso <https://en.wikipedia.org/wiki/SQL> ;
+    rdfs:subClassOf :QueryLanguage .
+
+:SQLDDL a :DataDefinitionLanguage,
+        tbox:LanguageEntity,
+        owl:NamedIndividual ;
+    rdfs:label "SQL DDL"@en ;
+    tbox:hasArea ce:SE,
+        ce:SLE ;
+    tbox:hasSpace ce:SQLware ;
+    tbox:isPartOf :SQL ;
+    rdfs:comment "data-definition part of SQL"@en ;
+    owl:sameAs <https://en.wikipedia.org/wiki/Data_definition_language> .
+
+:SQLDML a :DataManipulationLanguage,
+        tbox:LanguageEntity,
+        owl:NamedIndividual ;
+    rdfs:label "SQL DML"@en ;
+    tbox:hasArea ce:SE,
+        ce:SLE ;
+    tbox:hasSpace ce:SQLware ;
+    tbox:isPartOf :SQL ;
+    rdfs:comment "data-manipulation part of SQL"@en ;
+    owl:sameAs <https://en.wikipedia.org/wiki/Data_manipulation_language> .
+
+:SQLQuery a :RelationalQueryLanguage,
+        tbox:LanguageEntity,
+        owl:NamedIndividual ;
+    rdfs:label "SQL query language"@en ;
+    tbox:hasArea ce:SE,
+        ce:SLE ;
+    tbox:hasSpace ce:SQLware ;
+    tbox:isPartOf :SQL ;
+    rdfs:comment "query part of SQL"@en ;
+    owl:sameAs <https://en.wikipedia.org/wiki/SQL> .
+
+:SemanticDataModelLanguage a tbox:LanguageEntity ;
+    rdfs:label "Semantic data-model language"@en ;
+    tbox:hasArea ce:KR,
+        ce:SLE ;
+    tbox:hasSpace ce:Ontoware ;
+    rdfs:comment "software language for representing semantic graph-shaped data models"@en ;
+    rdfs:seeAlso <https://en.wikipedia.org/wiki/Semantic_data_model> ;
+    rdfs:subClassOf tbox:SoftwareLanguage .
+
+:SemanticQueryLanguage a tbox:LanguageEntity ;
+    rdfs:label "Semantic query language"@en ;
+    tbox:hasArea ce:KR,
+        ce:SLE ;
+    tbox:hasSpace ce:Ontoware ;
+    rdfs:seeAlso <https://en.wikipedia.org/wiki/SPARQL> ;
+    rdfs:subClassOf :QueryLanguage .
+
+:InterfaceDescriptionLanguage a tbox:LanguageEntity ;
+    rdfs:label "Interface description language"@en ;
+    tbox:hasArea ce:SE,
+        ce:SLE ;
+    tbox:hasSpace ce:APIware ;
+    rdfs:seeAlso <https://en.wikipedia.org/wiki/Interface_description_language> ;
+    rdfs:subClassOf tbox:SoftwareLanguage .
+
+:LogicProgrammingLanguage a tbox:LanguageEntity ;
+    rdfs:label "Logic programming language"@en ;
+    tbox:hasArea ce:FM,
+        ce:KR,
+        ce:SLE ;
+    tbox:hasSpace ce:Logicware ;
+    rdfs:seeAlso <https://en.wikipedia.org/wiki/Category:Logic_programming_languages>,
+        <https://en.wikipedia.org/wiki/Logic_programming> ;
+    rdfs:subClassOf tbox:SoftwareLanguage .
+
+:MarkupLanguage a tbox:LanguageEntity ;
+    rdfs:label "Markup language"@en ;
+    tbox:hasArea ce:SE,
+        ce:SLE ;
+    tbox:hasSpace ce:Markupware ;
+    rdfs:seeAlso <https://en.wikipedia.org/wiki/Markup_language> ;
+    rdfs:subClassOf tbox:SoftwareLanguage .
+
+:Metalanguage a tbox:LanguageEntity ;
+    rdfs:label "Metalanguage"@en ;
+    tbox:hasArea ce:CC,
+        ce:SLE ;
+    tbox:hasSpace ce:Grammarware ;
+    rdfs:comment "language for describing languages"@en ;
+    rdfs:seeAlso <https://en.wikipedia.org/wiki/Metalanguage> ;
+    rdfs:subClassOf tbox:SoftwareLanguage .
+
+:MetamodelingLanguage a tbox:LanguageEntity ;
+    rdfs:label "Metamodeling language"@en ;
+    tbox:hasArea ce:MDE,
+        ce:SE,
+        ce:SLE ;
+    tbox:hasSpace ce:Modelware ;
+    rdfs:comment "metalanguage for expressing metamodels and defining modeling languages"@en ;
+    rdfs:seeAlso <https://en.wikipedia.org/wiki/Metamodeling> ;
+    rdfs:subClassOf :Metalanguage .
+
+:ModelTransformationLanguage a tbox:LanguageEntity ;
+    rdfs:label "Model transformation language"@en ;
+    tbox:hasArea ce:MDE,
+        ce:SE,
+        ce:SLE ;
+    tbox:hasSpace ce:Modelware ;
+    rdfs:seeAlso <https://en.wikipedia.org/wiki/Model_transformation> ;
+    rdfs:subClassOf :TransformationLanguage .
+
+:ModelingLanguage a tbox:LanguageEntity ;
+    rdfs:label "Modeling language"@en ;
+    tbox:hasArea ce:FM,
+        ce:MDE,
+        ce:SE,
+        ce:SLE ;
+    tbox:hasSpace ce:Modelware ;
+    rdfs:comment "language for modeling systems"@en ;
+    rdfs:seeAlso <https://en.wikipedia.org/wiki/Modeling_language> ;
+    rdfs:subClassOf tbox:SoftwareLanguage .
+
+:OntologyLanguage a tbox:LanguageEntity ;
+    rdfs:label "Ontology language"@en ;
+    tbox:hasArea ce:KR,
+        ce:SLE ;
+    tbox:hasSpace ce:Ontoware ;
+    rdfs:comment "software language for expressing ontologies, vocabularies, axioms, and semantic conceptualizations"@en ;
+    rdfs:seeAlso <https://en.wikipedia.org/wiki/Ontology_language> ;
+    rdfs:subClassOf tbox:SoftwareLanguage .
+
+:ProofLanguage a tbox:LanguageEntity ;
+    rdfs:label "Proof language"@en ;
+    tbox:hasArea ce:FM,
+        ce:KR,
+        ce:SLE ;
+    tbox:hasSpace ce:Proofware ;
+    rdfs:seeAlso <https://en.wikipedia.org/wiki/Proof_assistant> ;
+    rdfs:subClassOf tbox:SoftwareLanguage .
+
+:RuleLanguage a tbox:LanguageEntity ;
+    rdfs:label "Rule language"@en ;
+    tbox:hasArea ce:KR,
+        ce:SE,
+        ce:SLE ;
+    tbox:hasSpace ce:Ruleware ;
+    rdfs:seeAlso <https://en.wikipedia.org/wiki/Rule-based_system> ;
+    rdfs:subClassOf tbox:SoftwareLanguage .
+
+:SchemaLanguage a tbox:LanguageEntity ;
+    rdfs:label "Schema language"@en ;
+    tbox:hasArea ce:SE,
+        ce:SLE ;
+    tbox:hasSpace ce:XMLware ;
+    rdfs:comment "software language for expressing structural schemas of artifacts"@en ;
+    rdfs:seeAlso <https://en.wikipedia.org/wiki/Schema_(computer_science)> ;
+    rdfs:subClassOf tbox:SoftwareLanguage .
+
+:XMLQueryLanguage a tbox:LanguageEntity ;
+    rdfs:label "XML query language"@en ;
+    tbox:hasArea ce:SE,
+        ce:SLE ;
+    tbox:hasSpace ce:XMLware ;
+    rdfs:seeAlso <https://en.wikipedia.org/wiki/XQuery> ;
+    rdfs:subClassOf :QueryLanguage .
+
+:XMLSchemaLanguage a tbox:LanguageEntity ;
+    rdfs:label "XML schema language"@en ;
+    tbox:hasArea ce:SE,
+        ce:SLE ;
+    tbox:hasSpace ce:XMLware ;
+    rdfs:comment "schema language for XML documents"@en ;
+    rdfs:seeAlso <https://en.wikipedia.org/wiki/XML_Schema_(W3C)> ;
+    rdfs:subClassOf :SchemaLanguage .
+
+:ConstraintLanguage a tbox:LanguageEntity ;
+    rdfs:label "Constraint language"@en ;
+    tbox:hasArea ce:KR,
+        ce:SE,
+        ce:SLE ;
+    tbox:hasSpace ce:Ontoware ;
+    rdfs:seeAlso <https://en.wikipedia.org/wiki/Constraint_programming> ;
+    rdfs:subClassOf tbox:SoftwareLanguage .
+
+:SQL a tbox:LanguageEntity,
+        tbox:SoftwareLanguage,
+        owl:NamedIndividual ;
+    rdfs:label "SQL"@en ;
+    tbox:hasArea ce:SE,
+        ce:SLE ;
+    tbox:hasPart :SQLDDL,
+        :SQLDML,
+        :SQLQuery ;
+    tbox:hasSpace ce:SQLware ;
+    rdfs:comment "language family for relational schema definition, data manipulation, and querying"@en ;
+    owl:sameAs <https://en.wikipedia.org/wiki/SQL> .
+
+:TransformationLanguage a tbox:LanguageEntity ;
+    rdfs:label "Transformation language"@en ;
+    tbox:hasArea ce:CC,
+        ce:MDE,
+        ce:SE,
+        ce:SLE ;
+    tbox:hasSpace ce:Modelware ;
+    rdfs:seeAlso <https://en.wikipedia.org/wiki/Program_transformation> ;
+    rdfs:subClassOf tbox:SoftwareLanguage .
+
+:GrammarMetalanguage a tbox:LanguageEntity ;
+    rdfs:label "Grammar metalanguage"@en ;
+    tbox:hasArea ce:CC,
+        ce:SLE ;
+    tbox:hasSpace ce:Grammarware ;
+    rdfs:comment "metalanguage for expressing grammars"@en ;
+    rdfs:seeAlso <https://en.wikipedia.org/wiki/Metasyntax> ;
+    rdfs:subClassOf :Metalanguage .
+
+:QueryLanguage a tbox:LanguageEntity ;
+    rdfs:label "Query language"@en ;
+    tbox:hasArea ce:KR,
+        ce:SE,
+        ce:SLE ;
+    tbox:hasSpace ce:SQLware ;
+    rdfs:comment "software language for selecting, navigating, or retrieving information from artifacts"@en ;
+    rdfs:seeAlso <https://en.wikipedia.org/wiki/Query_language> ;
+    rdfs:subClassOf tbox:SoftwareLanguage .
+

@@ -1,0 +1,9 @@
+Prefix;Ontology URI;Comment
+fsl;http://www.softlang.org/ontologies/fsl;Ontology on the foundations of software languages
+tbox;http://www.softlang.org/ontologies/tbox;Shared TBox of the FSL ontology
+fe;http://www.softlang.org/ontologies/fe;Sub-ontology / ABox for the foundational entities
+le;http://www.softlang.org/ontologies/le;Sub-ontology / ABox for software languages
+te;http://www.softlang.org/ontologies/te;Sub-ontology / ABox for software tools
+ae;http://www.softlang.org/ontologies/ae;Sub-ontology / ABox for software artifacts
+ce;http://www.softlang.org/ontologies/ce;Sub-ontology / ABox for conceptual entities
+lrefs;http://www.softlang.org/ontologies/lrefs;Collection of literature references

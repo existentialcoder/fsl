@@ -1,0 +1,342 @@
+@prefix ce: <http://www.softlang.org/ontologies/ce#> .
+@prefix fe: <http://www.softlang.org/ontologies/fe#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix : <http://www.softlang.org/ontologies/tbox#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://www.softlang.org/ontologies/tbox> a owl:Ontology ;
+    rdfs:comment "Shared TBox of the FSL ontology"@en .
+
+:ConceptualEntity rdfs:label "Conceptual entity"@en ;
+    rdfs:comment "Contextual concepts for the primary entity types (foundations, languages, tools, and artifacts)"@en ;
+    rdfs:subClassOf :Entity .
+
+:SoftwareArtifact rdfs:label "Software artifact"@en ;
+    rdfs:comment "software artifact kind used to classify the characteristic artifacts of a technological space"@en ;
+    rdfs:subClassOf :Root .
+
+:SoftwareTool rdfs:label "Software tool"@en ;
+    rdfs:subClassOf :Root .
+
+:hasAuthorString a owl:DatatypeProperty ;
+    rdfs:domain :LiteratureReference ;
+    rdfs:range xsd:string .
+
+:hasBibtexKey a owl:DatatypeProperty ;
+    rdfs:domain :LiteratureReference ;
+    rdfs:range xsd:string .
+
+:hasBooktitle a owl:DatatypeProperty ;
+    rdfs:domain :LiteratureReference ;
+    rdfs:range xsd:string .
+
+:hasDOI a owl:DatatypeProperty ;
+    rdfs:domain :LiteratureReference ;
+    rdfs:range xsd:string .
+
+:hasEntryType a owl:DatatypeProperty ;
+    rdfs:domain :LiteratureReference ;
+    rdfs:range xsd:string .
+
+:hasInclusionRoleComment a owl:DatatypeProperty ;
+    rdfs:domain :LiteratureReference ;
+    rdfs:range xsd:string .
+
+:hasJournal a owl:DatatypeProperty ;
+    rdfs:domain :LiteratureReference ;
+    rdfs:range xsd:string .
+
+:hasNumber a owl:DatatypeProperty ;
+    rdfs:domain :LiteratureReference ;
+    rdfs:range xsd:string .
+
+:hasPages a owl:DatatypeProperty ;
+    rdfs:domain :LiteratureReference ;
+    rdfs:range xsd:string .
+
+:hasPublicationYear a owl:DatatypeProperty ;
+    rdfs:domain :LiteratureReference ;
+    rdfs:range xsd:gYear .
+
+:hasPublisher a owl:DatatypeProperty ;
+    rdfs:domain :LiteratureReference ;
+    rdfs:range xsd:string .
+
+:hasSeries a owl:DatatypeProperty ;
+    rdfs:domain :LiteratureReference ;
+    rdfs:range xsd:string .
+
+:hasTitle a owl:DatatypeProperty ;
+    rdfs:domain :LiteratureReference ;
+    rdfs:range xsd:string .
+
+:hasURL a owl:DatatypeProperty ;
+    rdfs:domain :LiteratureReference ;
+    rdfs:range xsd:anyURI .
+
+:hasVolume a owl:DatatypeProperty ;
+    rdfs:domain :LiteratureReference ;
+    rdfs:range xsd:string .
+
+:conformsTo a owl:ObjectProperty ;
+    rdfs:label "conforms to"@en ;
+    rdfs:domain :ArtifactEntity ;
+    rdfs:range :ArtifactEntity ;
+    owl:inverseOf :hasConformingArtifact .
+
+:describesArtifact a owl:ObjectProperty ;
+    rdfs:label "describes artifact"@en ;
+    rdfs:domain :ArtifactEntity ;
+    rdfs:range :ArtifactEntity ;
+    owl:inverseOf :isDescribedByArtifact .
+
+:elementOf a owl:ObjectProperty ;
+    rdfs:label "element of"@en ;
+    rdfs:domain :ArtifactEntity ;
+    rdfs:range :LanguageEntity ;
+    owl:inverseOf :hasElement .
+
+:extends a owl:ObjectProperty ;
+    rdfs:label "extends"@en ;
+    rdfs:comment "relates a software language to another software language that it extends or generalizes"@en ;
+    rdfs:domain :SoftwareLanguage ;
+    rdfs:range :SoftwareLanguage ;
+    owl:inverseOf :isExtendedBy .
+
+:hasArtifact a owl:ObjectProperty ;
+    rdfs:label "has artifact"@en ;
+    rdfs:domain ce:TechnologicalSpace ;
+    rdfs:range :ArtifactEntity ;
+    owl:inverseOf :isArtifactOf .
+
+:hasConformingArtifact a owl:ObjectProperty ;
+    rdfs:label "has conforming artifact"@en ;
+    rdfs:domain :ArtifactEntity ;
+    rdfs:range :ArtifactEntity ;
+    owl:inverseOf :conformsTo .
+
+:hasElement a owl:ObjectProperty ;
+    rdfs:label "has element"@en ;
+    rdfs:domain :LanguageEntity ;
+    rdfs:range :ArtifactEntity ;
+    owl:inverseOf :elementOf .
+
+:hasLiteratureReference a owl:ObjectProperty ;
+    rdfs:label "has literature reference"@en ;
+    rdfs:domain ce:TechnologicalSpace ;
+    rdfs:range :LiteratureReference ;
+    owl:inverseOf :isLiteratureReferenceFor .
+
+:hasPart a owl:AsymmetricProperty,
+        owl:IrreflexiveProperty,
+        owl:ObjectProperty ;
+    rdfs:label "has part"@en ;
+    rdfs:comment "relates an ontology entity to another ontology entity that is a structural part or constituent of it"@en ;
+    rdfs:domain :Entity ;
+    rdfs:range :Entity ;
+    rdfs:subPropertyOf :uses ;
+    owl:inverseOf :isPartOf .
+
+:hasTool a owl:ObjectProperty ;
+    rdfs:label "has tool"@en ;
+    rdfs:domain ce:TechnologicalSpace ;
+    rdfs:range :ToolEntity ;
+    owl:inverseOf :isToolOf .
+
+:isAreaOf a owl:ObjectProperty ;
+    rdfs:label "is area of"@en ;
+    rdfs:comment "relates a subject area to an entity for which it is an important area of interest"@en ;
+    rdfs:domain ce:SubjectArea ;
+    rdfs:range [ a owl:Class ;
+            owl:unionOf ( :FoundationalEntity :LanguageEntity fe:FormalSystem fe:ModelOfComputation fe:MethodologicalApproach ) ] ;
+    owl:inverseOf :hasArea .
+
+:isArtifactOf a owl:ObjectProperty ;
+    rdfs:label "is artifact of"@en ;
+    rdfs:domain :ArtifactEntity ;
+    rdfs:range ce:TechnologicalSpace ;
+    owl:inverseOf :hasArtifact .
+
+:isDescribedByArtifact a owl:ObjectProperty ;
+    rdfs:label "is described by artifact"@en ;
+    rdfs:domain :ArtifactEntity ;
+    rdfs:range :ArtifactEntity ;
+    owl:inverseOf :describesArtifact .
+
+:isExtendedBy a owl:ObjectProperty ;
+    rdfs:label "is extended by"@en ;
+    rdfs:comment "relates a software language to another software language that extends or generalizes it"@en ;
+    rdfs:domain :SoftwareLanguage ;
+    rdfs:range :SoftwareLanguage ;
+    owl:inverseOf :extends .
+
+:isLiteratureReferenceFor a owl:ObjectProperty ;
+    rdfs:label "is literature reference for"@en ;
+    rdfs:domain :LiteratureReference ;
+    rdfs:range ce:TechnologicalSpace ;
+    owl:inverseOf :hasLiteratureReference .
+
+:isPartOf a owl:AsymmetricProperty,
+        owl:IrreflexiveProperty,
+        owl:ObjectProperty ;
+    rdfs:label "is part of"@en ;
+    rdfs:comment "relates an ontology entity to another ontology entity of which it is a structural part or constituent"@en ;
+    rdfs:domain :Entity ;
+    rdfs:range :Entity ;
+    rdfs:subPropertyOf :isUsedBy ;
+    owl:inverseOf :hasPart .
+
+:isProcessedByTool a owl:ObjectProperty ;
+    rdfs:label "is processed by tool"@en ;
+    rdfs:domain :ArtifactEntity ;
+    rdfs:range :ToolEntity ;
+    owl:inverseOf :processesArtifact .
+
+:isServedBy a owl:ObjectProperty ;
+    rdfs:label "is served by"@en ;
+    rdfs:comment "relates a methodological approach to an entity that serves, realizes, supports, or instantiates it in an important way"@en ;
+    rdfs:domain fe:MethodologicalApproach ;
+    rdfs:range :FoundationalEntity ;
+    owl:inverseOf :serves .
+
+:isSpaceOf a owl:ObjectProperty ;
+    rdfs:label "is space of"@en ;
+    rdfs:comment "relates a technological space to an entity that characteristically belongs to it"@en ;
+    rdfs:domain ce:TechnologicalSpace ;
+    rdfs:range [ a owl:Class ;
+            owl:unionOf ( :FoundationalEntity :LanguageEntity fe:FormalSystem fe:ModelOfComputation fe:MethodologicalApproach ) ] ;
+    owl:inverseOf :hasSpace .
+
+:isSpecifiedBy a owl:ObjectProperty ;
+    rdfs:label "is specified by"@en ;
+    rdfs:comment "relates an entity to a methodological approach used to formally specify or define its behavior or meaning"@en ;
+    rdfs:domain :FoundationalEntity ;
+    rdfs:range fe:MethodologicalApproach ;
+    owl:inverseOf :specifies .
+
+:isSupportedByTool a owl:ObjectProperty ;
+    rdfs:label "is supported by tool"@en ;
+    rdfs:domain :LanguageEntity ;
+    rdfs:range :ToolEntity ;
+    owl:inverseOf :supportsLanguage .
+
+:isToolOf a owl:ObjectProperty ;
+    rdfs:label "is tool of"@en ;
+    rdfs:domain :ToolEntity ;
+    rdfs:range ce:TechnologicalSpace ;
+    owl:inverseOf :hasTool .
+
+:processesArtifact a owl:ObjectProperty ;
+    rdfs:label "processes artifact"@en ;
+    rdfs:domain :ToolEntity ;
+    rdfs:range :ArtifactEntity ;
+    owl:inverseOf :isProcessedByTool .
+
+:serves a owl:ObjectProperty ;
+    rdfs:label "serves"@en ;
+    rdfs:comment "relates an entity to a methodological approach that it serves, realizes, supports, or instantiates in an important way"@en ;
+    rdfs:domain :FoundationalEntity ;
+    rdfs:range fe:MethodologicalApproach ;
+    owl:inverseOf :isServedBy .
+
+:specifies a owl:ObjectProperty ;
+    rdfs:label "specifies"@en ;
+    rdfs:comment "relates a methodological approach to an entity whose behavior or meaning it is used to formally specify or define"@en ;
+    rdfs:domain fe:MethodologicalApproach ;
+    rdfs:range :FoundationalEntity ;
+    owl:inverseOf :isSpecifiedBy .
+
+:supportsLanguage a owl:ObjectProperty ;
+    rdfs:label "supports language"@en ;
+    rdfs:domain :ToolEntity ;
+    rdfs:range :LanguageEntity ;
+    owl:inverseOf :isSupportedByTool .
+
+:isUsedBy a owl:ObjectProperty ;
+    rdfs:label "is used by"@en ;
+    rdfs:comment "relates an ontology entity to another ontology entity that uses it conceptually, methodologically, or technically"@en ;
+    rdfs:domain :Entity ;
+    rdfs:range :Entity ;
+    owl:inverseOf :uses .
+
+:uses a owl:ObjectProperty ;
+    rdfs:label "uses"@en ;
+    rdfs:comment "relates an ontology entity to another ontology entity that it uses conceptually, methodologically, or technically"@en ;
+    rdfs:domain :Entity ;
+    rdfs:range :Entity ;
+    owl:inverseOf :isUsedBy .
+
+:Root a owl:Class ;
+    rdfs:label "Root"@en ;
+    rdfs:comment "root category used to anchor the main taxonomic branches of the ontology"@en .
+
+:hasSpace a owl:ObjectProperty ;
+    rdfs:label "has space"@en ;
+    rdfs:comment "associates an entity with a technological space to which it characteristically belongs"@en ;
+    rdfs:domain [ a owl:Class ;
+            owl:unionOf ( :FoundationalEntity :LanguageEntity fe:FormalSystem fe:ModelOfComputation fe:MethodologicalApproach ) ] ;
+    rdfs:range ce:TechnologicalSpace ;
+    owl:inverseOf :isSpaceOf .
+
+:SoftwareLanguage rdfs:label "Software language"@en ;
+    rdfs:comment "Concrete software languages (e.g., XML, SQL, OWL) are represented as individuals of this class. Language families are represented as subclasses. Artifact kinds capture the kinds of artifacts written in such languages."@en ;
+    rdfs:seeAlso <https://en.wikipedia.org/wiki/Software_language> ;
+    rdfs:subClassOf :Root .
+
+:hasArea a owl:ObjectProperty ;
+    rdfs:label "has area"@en ;
+    rdfs:comment "identifies an important subject area of interest for a foundational or language entity"@en ;
+    rdfs:domain [ a owl:Class ;
+            owl:unionOf ( :FoundationalEntity :LanguageEntity fe:FormalSystem fe:ModelOfComputation fe:MethodologicalApproach ) ] ;
+    rdfs:range ce:SubjectArea ;
+    owl:inverseOf :isAreaOf .
+
+:ToolEntity rdfs:label "Tool entity"@en ;
+    rdfs:comment "ontological entity used to represent software tools, tool families, and tool-related instances"@en ;
+    rdfs:subClassOf :Entity .
+
+:FoundationalEntity rdfs:label "Foundational entity"@en ;
+    rdfs:comment "ontological entity used to represent foundational formalisms, theories, models of computation, and methodological approaches"@en ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass ce:SubjectArea ;
+            owl:onProperty :hasArea ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "3"^^xsd:nonNegativeInteger ;
+            owl:onClass ce:SubjectArea ;
+            owl:onProperty :hasArea ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass ce:TechnologicalSpace ;
+            owl:onProperty :hasSpace ],
+        :Entity .
+
+:LanguageEntity rdfs:label "Language entity"@en ;
+    rdfs:comment "ontological entity used to represent software languages, language families, and language-related instances"@en ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass ce:SubjectArea ;
+            owl:onProperty :hasArea ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "3"^^xsd:nonNegativeInteger ;
+            owl:onClass ce:SubjectArea ;
+            owl:onProperty :hasArea ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass ce:TechnologicalSpace ;
+            owl:onProperty :hasSpace ],
+        :Entity .
+
+:Entity a owl:Class ;
+    rdfs:label "Entity"@en ;
+    rdfs:comment "top-level category for entities represented in this ontology"@en .
+
+:ArtifactEntity rdfs:label "Artifact entity"@en ;
+    rdfs:comment "ontological entity used to represent software artifacts, artifact families, and artifact-related instances"@en ;
+    rdfs:subClassOf :Entity .
+
+:LiteratureReference a owl:Class ;
+    rdfs:label "Literature reference"@en .
+
