@@ -344,6 +344,7 @@
     owl:sameAs <https://en.wikipedia.org/wiki/Sequent_calculus> .
 
 :SimplyTypedLambdaCalculus a :ClassicalLambdaCalculus,
+        tbox:FoundationalEntity,
         :LambdaCube,
         :TypeTheory,
         tbox:FoundationalEntity,
@@ -377,6 +378,7 @@
     owl:sameAs <https://en.wikipedia.org/wiki/Semi-Thue_system> .
 
 :SystemF a :LambdaCube,
+        tbox:FoundationalEntity,
         :TypeTheory,
         tbox:FoundationalEntity,
         owl:NamedIndividual ;
@@ -411,6 +413,7 @@
     owl:sameAs <https://en.wikipedia.org/wiki/Tree_transducer> .
 
 :UntypedLambdaCalculus a :ClassicalLambdaCalculus,
+        tbox:FoundationalEntity,
         :LambdaCalculus,
         tbox:FoundationalEntity,
         owl:NamedIndividual ;
@@ -429,8 +432,7 @@
     rdfs:comment "methodological approach centered on formally posed problems to be solved computationally"@en,
         "methodological approach concerned with problem formulations addressed by computation"@en ;
     rdfs:seeAlso <https://en.wikipedia.org/wiki/Computational_problem> ;
-    rdfs:subClassOf tbox:FoundationalEntity,
-        tbox:Root .
+    rdfs:subClassOf tbox:FoundationalEntity .
 
 :DataStructure a tbox:FoundationalEntity ;
     rdfs:label "Data structure"@en ;
@@ -440,8 +442,7 @@
     rdfs:comment "methodological approach concerned with organizing and relating data in structures suited for computation and analysis"@en,
         "methodological approach concerned with the organization of data for efficient processing and access"@en ;
     rdfs:seeAlso <https://en.wikipedia.org/wiki/Data_structure> ;
-    rdfs:subClassOf tbox:FoundationalEntity,
-        tbox:Root .
+    rdfs:subClassOf tbox:FoundationalEntity .
 
 :DomainTheory a tbox:FoundationalEntity ;
     rdfs:label "Domain theory"@en ;
@@ -459,8 +460,7 @@
     tbox:hasSpace ce:Graphware ;
     rdfs:comment "methodological approach centered on mathematical structures used to organize formal reasoning"@en ;
     rdfs:seeAlso <https://en.wikipedia.org/wiki/Mathematical_structure> ;
-    rdfs:subClassOf tbox:FoundationalEntity,
-        tbox:Root .
+    rdfs:subClassOf tbox:FoundationalEntity .
 
 :SoftwareDesignApproach a tbox:FoundationalEntity ;
     rdfs:label "Software design approach"@en ;
@@ -563,8 +563,7 @@
     rdfs:label "Model of computation"@en ;
     rdfs:comment "formal model for representing computation, execution, or state evolution"@en ;
     rdfs:seeAlso <https://en.wikipedia.org/wiki/Model_of_computation> ;
-    rdfs:subClassOf tbox:FoundationalEntity,
-        tbox:Root .
+    rdfs:subClassOf tbox:FoundationalEntity .
 
 :OperationalSemantics a :FormalSemanticsApproach,
         tbox:FoundationalEntity,
@@ -688,8 +687,7 @@
     rdfs:label "Formal object"@en ;
     rdfs:comment "formal object used as a mathematically characterized syntactic or symbolic entity"@en ;
     rdfs:seeAlso <https://en.wikipedia.org/wiki/Formalism_(philosophy_of_mathematics)> ;
-    rdfs:subClassOf tbox:FoundationalEntity,
-        tbox:Root .
+    rdfs:subClassOf tbox:FoundationalEntity .
 
 :ProgramTransformation a :MetaprogrammingApproach,
         tbox:FoundationalEntity,
@@ -710,8 +708,7 @@
         ce:TCS ;
     tbox:hasSpace ce:Programware ;
     rdfs:seeAlso <https://en.wikipedia.org/wiki/Theory> ;
-    rdfs:subClassOf tbox:FoundationalEntity,
-        tbox:Root .
+    rdfs:subClassOf tbox:FoundationalEntity .
 
 :LambdaCalculus a tbox:FoundationalEntity ;
     rdfs:label "Lambda calculus"@en ;
@@ -733,13 +730,11 @@
 :MethodologicalApproach a tbox:FoundationalEntity ;
     rdfs:label "Methodological approach"@en ;
     rdfs:comment "class of foundational entities that represent methodological orientations, techniques, or styles of treatment used in the study or engineering of software languages and related formalisms"@en ;
-    rdfs:subClassOf tbox:FoundationalEntity,
-        tbox:Root .
+    rdfs:subClassOf tbox:FoundationalEntity .
 
 :FormalSystem a tbox:FoundationalEntity ;
     rdfs:label "Formal system"@en ;
     rdfs:comment "symbolic deductive formal system"@en ;
     rdfs:seeAlso <https://en.wikipedia.org/wiki/Formal_system> ;
-    rdfs:subClassOf tbox:FoundationalEntity,
-        tbox:Root .
+    rdfs:subClassOf tbox:FoundationalEntity .
 

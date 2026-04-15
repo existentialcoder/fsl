@@ -1,13 +1,13 @@
-@prefix : <http://www.softlang.org/ontologies/lrefs#> .
+@prefix : <http://www.softlang.org/ontologies/re#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix tbox: <http://www.softlang.org/ontologies/tbox#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<http://www.softlang.org/ontologies/lrefs> a owl:Ontology ;
+<http://www.softlang.org/ontologies/re> a owl:Ontology ;
     rdfs:comment "Collection of literature references"@en .
 
-:Bezivin2006MDETechnicalSpace a tbox:LiteratureReference,
+:Bezivin2006MDETechnicalSpace a tbox:ReferenceEntity,
         owl:NamedIndividual ;
     rdfs:label "Bézivin 2006"@en ;
     tbox:hasAuthorString "Jean Bézivin" ;
@@ -23,7 +23,7 @@
     tbox:hasTitle "Model Driven Engineering: An Emerging Technical Space" ;
     tbox:hasVolume "4143" .
 
-:FavreLaemmelVaranovich2012LinguisticArchitecture a tbox:LiteratureReference,
+:FavreLaemmelVaranovich2012LinguisticArchitecture a tbox:ReferenceEntity,
         owl:NamedIndividual ;
     rdfs:label "Favre, Lämmel, and Varanovich 2012"@en ;
     tbox:hasAuthorString "Jean-Marie Favre and Ralf Lämmel and Andrei Varanovich" ;
@@ -38,7 +38,7 @@
     tbox:hasSeries "Lecture Notes in Computer Science" ;
     tbox:hasTitle "Modeling the Linguistic Architecture of Software Products" .
 
-:FavreNguyen2004MegamodelEvolution a tbox:LiteratureReference,
+:FavreNguyen2004MegamodelEvolution a tbox:ReferenceEntity,
         owl:NamedIndividual ;
     rdfs:label "Favre and Nguyen 2004"@en ;
     tbox:hasAuthorString "Jean-Marie Favre and Tam Nguyen" ;
@@ -50,7 +50,7 @@
     tbox:hasTitle "Towards a Megamodel to Model Software Evolution Through Transformations" ;
     tbox:hasURL "https://www.researchgate.net/publication/220369017_Towards_a_Megamodel_to_Model_Software_Evolution_Through_Transformations"^^xsd:anyURI .
 
-:KlintLaemmelVerhoef2005Grammarware a tbox:LiteratureReference,
+:KlintLaemmelVerhoef2005Grammarware a tbox:ReferenceEntity,
         owl:NamedIndividual ;
     rdfs:label "Klint, Lämmel, and Verhoef 2005"@en ;
     tbox:hasAuthorString "Paul Klint and Ralf Lämmel and Chris Verhoef" ;
@@ -66,7 +66,7 @@
     tbox:hasURL "https://doi.org/10.1145/1072997.1073000"^^xsd:anyURI ;
     tbox:hasVolume "14" .
 
-:KurtevBezivinAksit2002TechnologicalSpaces a tbox:LiteratureReference,
+:KurtevBezivinAksit2002TechnologicalSpaces a tbox:ReferenceEntity,
         owl:NamedIndividual ;
     rdfs:label "Kurtev, Bézivin, and Aksit 2002"@en ;
     tbox:hasAuthorString "Ivan Kurtev and Jean Bézivin and Mehmet Aksit" ;

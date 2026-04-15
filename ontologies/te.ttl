@@ -1,6 +1,7 @@
 @prefix ae: <http://www.softlang.org/ontologies/ae#> .
 @prefix ce: <http://www.softlang.org/ontologies/ce#> .
 @prefix le: <http://www.softlang.org/ontologies/le#> .
+@prefix pe: <http://www.softlang.org/ontologies/pe#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix tbox: <http://www.softlang.org/ontologies/tbox#> .
@@ -8,7 +9,8 @@
 
 <http://www.softlang.org/ontologies/te> a owl:Ontology ;
     rdfs:comment "Sub-ontology / ABox for software tools"@en ;
-    owl:imports <http://www.softlang.org/ontologies/tbox> .
+    owl:imports <http://www.softlang.org/ontologies/pe>,
+        <http://www.softlang.org/ontologies/tbox> .
 
 :ANTLR a tbox:ToolEntity,
         :ParserGenerator,
@@ -43,7 +45,7 @@
 :Compiler a tbox:ToolEntity ;
     rdfs:label "Compiler"@en ;
     tbox:processesArtifactKind ae:ProgramArtifact ;
-    tbox:supportsLanguage le:ProgrammingLanguage ;
+    tbox:supportsLanguage pe:ProgrammingLanguage ;
     rdfs:subClassOf tbox:SoftwareTool .
 
 :CoqProofAssistant a tbox:ToolEntity,
@@ -90,7 +92,7 @@
 :Interpreter a tbox:ToolEntity ;
     rdfs:label "Interpreter"@en ;
     tbox:processesArtifactKind ae:ProgramArtifact ;
-    tbox:supportsLanguage le:ProgrammingLanguage ;
+    tbox:supportsLanguage pe:ProgrammingLanguage ;
     rdfs:subClassOf tbox:SoftwareTool .
 
 :JSONProcessor a tbox:ToolEntity ;
@@ -168,7 +170,7 @@
 :StaticAnalyzer a tbox:ToolEntity ;
     rdfs:label "Static analyzer"@en ;
     tbox:processesArtifactKind ae:ProgramArtifact ;
-    tbox:supportsLanguage le:ProgrammingLanguage ;
+    tbox:supportsLanguage pe:ProgrammingLanguage ;
     rdfs:subClassOf tbox:SoftwareTool .
 
 :SwaggerEditor a tbox:ToolEntity,
@@ -210,7 +212,8 @@
 :LogicProgrammingSystem a tbox:ToolEntity ;
     rdfs:label "Logic programming system"@en ;
     tbox:processesArtifactKind ae:LogicProgramArtifact ;
-    tbox:supportsLanguage le:LogicProgrammingLanguage ;
+    tbox:supportsLanguage pe:Prolog,
+        pe:Datalog ;
     rdfs:subClassOf tbox:SoftwareTool .
 
 :ModelingWorkbench a tbox:ToolEntity ;

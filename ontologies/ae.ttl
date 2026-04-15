@@ -1,12 +1,14 @@
 @prefix : <http://www.softlang.org/ontologies/ae#> .
 @prefix le: <http://www.softlang.org/ontologies/le#> .
+@prefix pe: <http://www.softlang.org/ontologies/pe#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix tbox: <http://www.softlang.org/ontologies/tbox#> .
 
 <http://www.softlang.org/ontologies/ae> a owl:Ontology ;
     rdfs:comment "Sub-ontology / ABox for software artifacts"@en ;
-    owl:imports <http://www.softlang.org/ontologies/tbox> .
+    owl:imports <http://www.softlang.org/ontologies/pe>,
+        <http://www.softlang.org/ontologies/tbox> .
 
 :APIDescriptionArtifact a tbox:ArtifactEntity ;
     rdfs:label "API description artifact"@en ;
@@ -25,7 +27,8 @@
 
 :LogicProgramArtifact a tbox:ArtifactEntity ;
     rdfs:label "Logic-program artifact"@en ;
-    tbox:elementOf le:LogicProgrammingLanguage ;
+    tbox:elementOf pe:ProgrammingLanguage ;
+    rdfs:comment "artifact kind typically associated with logic-paradigm programming languages such as Prolog and Datalog"@en ;
     rdfs:subClassOf tbox:SoftwareArtifact .
 
 :MarkupArtifact a tbox:ArtifactEntity ;
@@ -47,7 +50,7 @@
 
 :ProgramArtifact a tbox:ArtifactEntity ;
     rdfs:label "Program artifact"@en ;
-    tbox:elementOf le:ProgrammingLanguage ;
+    tbox:elementOf pe:ProgrammingLanguage ;
     rdfs:subClassOf tbox:SoftwareArtifact .
 
 :ProofArtifact a tbox:ArtifactEntity ;

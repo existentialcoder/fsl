@@ -8,6 +8,7 @@
         <http://www.softlang.org/ontologies/ce>,
         <http://www.softlang.org/ontologies/fe>,
         <http://www.softlang.org/ontologies/le>,
-        <http://www.softlang.org/ontologies/lrefs>,
+        <http://www.softlang.org/ontologies/re>,
+        <http://www.softlang.org/ontologies/pe>,
         <http://www.softlang.org/ontologies/te> .
 
