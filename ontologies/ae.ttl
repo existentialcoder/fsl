@@ -33,6 +33,13 @@
 :GrammarArtifact a tbox:ArtifactEntity ;
     rdfs:label "Grammar artifact"@en ;
     tbox:elementOf le:GrammarMetalanguage ;
+    tbox:conformsTo :GrammarOfGrammarsArtifact ;
+    rdfs:subClassOf tbox:SoftwareArtifact .
+
+:GrammarOfGrammarsArtifact a tbox:ArtifactEntity ;
+    rdfs:label "Grammar artifact"@en ;
+    tbox:elementOf le:GrammarMetalanguage ;
+    tbox:defines le:GrammarMetalanguage ;
     rdfs:subClassOf tbox:SoftwareArtifact .
 
 :GraphQueryArtifact a tbox:ArtifactEntity ;

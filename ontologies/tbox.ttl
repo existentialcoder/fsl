@@ -13,26 +13,25 @@
     :metamodelingPolicy "Punning/metamodeling is used systematically. Every class that is a subclass of an Entity subclass should also be explicitly typed as that Entity subclass. Every individual whose asserted type derives from an Entity subclass should also be explicitly typed as that Entity subclass. Example: le:QueryLanguage a tbox:LanguageEntity . Example: le:SQL a tbox:LanguageEntity . This expectation should be maintained as the ontology evolves."@en ;
     rdfs:comment "Shared TBox of the FSL ontology"@en .
 
-:ArtifactEntity rdfs:label "Artifact entity"@en ;
-    :metamodelingPolicy "Declare every subclass and every individual derived from ArtifactEntity explicitly as an ArtifactEntity."@en ;
-    rdfs:comment "Ontological entity used to represent software artifacts, artifact families, and artifact-related instances"@en ;
-    rdfs:subClassOf :Entity .
+:ArtifactEntity rdfs:subClassOf :Entity ;
+    rdfs:label "Artifact entity"@en ;
+    :metamodelingPolicy "All non-immediate subclasses must also be of this type."@en ;
+    rdfs:comment "Ontological entity used to represent software artifacts, artifact families, and artifact-related instances"@en .
 
-:Assertion a :ConceptualEntity,
-        owl:Class ;
+:Assertion rdfs:subClassOf :ConceptualEntity ;
     rdfs:label "Assertion"@en ;
-    :metamodelingPolicy "Declare every subclass and every individual derived from Assertion explicitly as a ConceptualEntity."@en ;
     rdfs:comment "Reified assertion entity used for qualified statements in language-related modules"@en ;
-    rdfs:subClassOf :ConceptualEntity .
+    foaf:isPrimaryTopicOf <https://en.wikipedia.org/wiki/Reification_(knowledge_representation)> .
 
-:ConceptualEntity rdfs:label "Conceptual entity"@en ;
-    :metamodelingPolicy "Declare every subclass and every individual derived from ConceptualEntity explicitly as a ConceptualEntity."@en ;
-    rdfs:comment "Contextual concepts for the primary entity types (foundations, languages, tools, and artifacts)"@en ;
-    rdfs:subClassOf :Entity .
+:ConceptualEntity rdfs:subClassOf :Entity ;
+    rdfs:label "Conceptual entity"@en ;
+    :metamodelingPolicy "All non-immediate subclasses must also be of this type."@en ;
+    rdfs:comment "Contextual concepts for other entity types (foundations, languages, tools, and artifacts)"@en .
 
 :Entity a owl:Class ;
     rdfs:label "Entity"@en ;
     rdfs:comment "Top-level category for entities represented in this ontology. Entities should be linked to at least one descriptive document via foaf:isPrimaryTopicOf or foaf:page."@en ;
+    foaf:page <https://en.wikipedia.org/wiki/Knowledge_representation_and_reasoning> ;
     rdfs:subClassOf [ a owl:Class ;
             owl:unionOf ( [ a owl:Restriction ;
                         owl:onProperty foaf:isPrimaryTopicOf ;
@@ -40,9 +39,10 @@
                         owl:onProperty foaf:page ;
                         owl:someValuesFrom foaf:Document ] ) ] .
 
-:FoundationalEntity rdfs:label "Foundational entity"@en ;
-    :metamodelingPolicy "Declare every subclass and every individual derived from FoundationalEntity explicitly as a FoundationalEntity."@en ;
+:FoundationalEntity rdfs:subClassOf :Entity ;
+    rdfs:label "Foundational entity"@en ;
     rdfs:comment "Ontological entity used to represent foundational formalisms, theories, models of computation, and methodological approaches"@en ;
+    :metamodelingPolicy "All non-immediate subclasses must also be of this type."@en ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onClass ce:SubjectArea ;
@@ -54,18 +54,16 @@
         [ a owl:Restriction ;
             owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onClass ce:TechnologicalSpace ;
-            owl:onProperty :hasSpace ],
-        :Entity .
+            owl:onProperty :hasSpace ] .
 
-:IssueEntity a :Entity,
-        owl:Class ;
+:IssueEntity rdfs:subClassOf :Entity ;
     rdfs:label "Issue entity"@en ;
-    :metamodelingPolicy "Declare every subclass and every individual derived from IssueEntity explicitly as an Entity."@en ;
     rdfs:comment "Entity for representing review issues, critiques, and proposed resolutions concerning resources, predicates, or fully specified assertions in the ontology"@en ;
-    rdfs:subClassOf :Entity .
+    foaf:page <https://en.wikipedia.org/wiki/Issue_tracking_system> .
 
-:LanguageEntity rdfs:label "Language entity"@en ;
-    :metamodelingPolicy "Declare every subclass and every individual derived from LanguageEntity explicitly as a LanguageEntity."@en ;
+:LanguageEntity rdfs:subClassOf :Entity ;
+    rdfs:label "Language entity"@en ;
+    :metamodelingPolicy "All non-immediate subclasses must also be of this type."@en ;
     rdfs:comment "Ontological entity used to represent software languages, language families, and language-related instances"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:maxQualifiedCardinality "3"^^xsd:nonNegativeInteger ;
@@ -78,13 +76,12 @@
         [ a owl:Restriction ;
             owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onClass ce:SubjectArea ;
-            owl:onProperty :hasArea ],
-        :Entity .
+            owl:onProperty :hasArea ] .
 
-:ReferenceEntity a owl:Class ;
+:ReferenceEntity rdfs:subClassOf :Entity ;
     rdfs:label "Reference entity"@en ;
-    rdfs:comment "Reference entities are essentially literature references with properties inspired by the BIB format."@en ;
-    rdfs:subClassOf :Entity .
+    rdfs:comment "Reference entities are essentially literature references specified through properties used by the BibTeX format. Reference entities are typically justified with a reason for inclusion and linked to some ontological entity."@en ;
+    foaf:page <https://en.wikipedia.org/wiki/Reference_work> .
 
 :SoftwareArtifact a :ArtifactEntity ;
     rdfs:label "Software artifact"@en ;
@@ -99,27 +96,31 @@
 
 :SoftwareTool a :ToolEntity ;
     rdfs:label "Software tool"@en ;
+    foaf:page <https://en.wikipedia.org/wiki/Programming_tool> ;
     rdfs:subClassOf :ToolEntity .
 
 :ToolEntity rdfs:label "Tool entity"@en ;
-    :metamodelingPolicy "Declare every subclass and every individual derived from ToolEntity explicitly as a ToolEntity."@en ;
+    :metamodelingPolicy "All non-immediate subclasses must also be of this type."@en ;
     rdfs:comment "Ontological entity used to represent software tools, tool families, and tool-related instances"@en ;
     rdfs:subClassOf :Entity .
 
 :classifies a owl:ObjectProperty ;
     rdfs:label "classifies"@en ;
-    rdfs:comment "Relates an artifact entity to another artifact entity that conforms to it as its classifier, schema, metamodel, or analogous defining artifact"@en ;
+    rdfs:comment "A metamodel-to-model-like classification relationship generalizing across technological spaces"@en ;
+    foaf:page <https://en.wikipedia.org/wiki/Metamodeling> ;
     rdfs:domain :ArtifactEntity ;
     rdfs:range :ArtifactEntity ;
     owl:inverseOf :conformsTo .
 
 :commentingPolicy a owl:AnnotationProperty ;
     rdfs:label "Commenting policy"@en ;
-    rdfs:comment "Documents the ontology-wide expectation regarding commenting"@en .
+    rdfs:comment "Documents the ontology-wide expectation regarding commenting"@en ;
+    foaf:page <https://en.wikipedia.org/wiki/Guideline> .
 
 :conformsTo a owl:ObjectProperty ;
     rdfs:label "conforms to"@en ;
-    rdfs:comment "Relates an artifact entity to another artifact entity that classifies it through a meta-to-metamodel-like conformance relation across technological spaces"@en ;
+    rdfs:comment "A model-to-metamodel-like conformance relationship generalizing across technological spaces"@en ;
+    foaf:page <https://en.wikipedia.org/wiki/Metamodeling> ;
     rdfs:domain :ArtifactEntity ;
     rdfs:range :ArtifactEntity ;
     owl:inverseOf :classifies .
@@ -127,11 +128,22 @@
 :critique a owl:DatatypeProperty ;
     rdfs:label "critique"@en ;
     rdfs:comment "Describes the problem, concern, or critique expressed by an issue"@en ;
+    foaf:page <https://en.wikipedia.org/wiki/Issue_tracking_system> ;
     rdfs:domain :IssueEntity ;
     rdfs:range xsd:string .
 
+:defines a owl:ObjectProperty ;
+    rdfs:label "defines"@en ;
+    rdfs:comment "Relates an artifact to a language in the sense of a definition (specification)"@en ;
+    foaf:page <https://en.wikipedia.org/wiki/Programming_language_specification> ;
+    rdfs:domain :ArtifactEntity ;
+    rdfs:range :LanguageEntity ;
+    owl:inverseOf :isDefinedBy .
+
 :elementOf a owl:ObjectProperty ;
     rdfs:label "element of"@en ;
+    rdfs:comment "Relates an artifact to a language in the set-theoretic sense"@en ;
+    foaf:page <https://en.wikipedia.org/wiki/Membership_function_(mathematics)> ;
     rdfs:domain :ArtifactEntity ;
     rdfs:range :LanguageEntity ;
     owl:inverseOf :hasElement .
@@ -139,17 +151,20 @@
 :extends a owl:ObjectProperty ;
     rdfs:label "extends"@en ;
     rdfs:comment "Relates a software language to another software language that it extends or generalizes"@en ;
+    foaf:page <https://en.wikipedia.org/wiki/N/A> ;
     rdfs:domain :SoftwareLanguage ;
     rdfs:range :SoftwareLanguage ;
     owl:inverseOf :isExtendedBy .
 
 :formattingPolicy a owl:AnnotationProperty ;
     rdfs:label "Formatting policy"@en ;
-    rdfs:comment "Documents the ontology-wide expectation regarding formatting"@en .
+    rdfs:comment "Documents the ontology-wide expectation regarding formatting"@en ;
+    foaf:page <https://en.wikipedia.org/wiki/Guideline> .
 
 :hasAffectedArtifact a owl:ObjectProperty ;
     rdfs:label "has affected artifact"@en ;
     rdfs:comment "Relates a software engineering activity or software tool to an artifact kind that it characteristically affects or modifies when the role is not best captured as input or output alone"@en ;
+    foaf:page <https://en.wikipedia.org/wiki/Artifact_(software_development)> ;
     rdfs:domain [ a owl:Class ;
             owl:unionOf ( ce:EngineeringActivity :ToolEntity ) ] ;
     rdfs:range :ArtifactEntity .
@@ -157,69 +172,94 @@
 :hasArea a owl:ObjectProperty ;
     rdfs:label "has area"@en ;
     rdfs:comment "Identifies an important subject area of interest for an entity"@en ;
+    foaf:page <https://en.wikipedia.org/wiki/Academic_discipline> ;
     rdfs:domain :Entity ;
     rdfs:range ce:SubjectArea ;
     owl:inverseOf :isAreaOf .
 
 :hasArtifact a owl:ObjectProperty ;
     rdfs:label "has artifact"@en ;
+    rdfs:comment "Relates a technological space to a kind of artifact that it is concerned with"@en ;    
+    foaf:page <https://en.wikipedia.org/wiki/Artifact_(software_development)> ;
     rdfs:domain ce:TechnologicalSpace ;
     rdfs:range :ArtifactEntity ;
     owl:inverseOf :isArtifactOf .
 
 :hasAuthorString a owl:DatatypeProperty ;
+    rdfs:comment "A BibTeX-style author string"@en ;    
+    foaf:page <https://en.wikipedia.org/wiki/BibTeX> ;
     rdfs:domain :ReferenceEntity ;
     rdfs:range xsd:string .
 
 :hasBibtexKey a owl:DatatypeProperty ;
+    rdfs:comment "A BibTeX-style key"@en ;    
+    foaf:page <https://en.wikipedia.org/wiki/BibTeX> ;
     rdfs:domain :ReferenceEntity ;
     rdfs:range xsd:string .
 
 :hasBooktitle a owl:DatatypeProperty ;
+    rdfs:comment "A BibTeX-style booktitle"@en ;    
+    foaf:page <https://en.wikipedia.org/wiki/BibTeX> ;
     rdfs:domain :ReferenceEntity ;
     rdfs:range xsd:string .
 
 :hasDOI a owl:DatatypeProperty ;
+    rdfs:comment "A BibTeX-style DOI"@en ;    
+    foaf:page <https://en.wikipedia.org/wiki/BibTeX> ;
     rdfs:domain :ReferenceEntity ;
     rdfs:range xsd:string .
 
 :hasElement a owl:ObjectProperty ;
     rdfs:label "has element"@en ;
+    rdfs:comment "Relates a language to an artifact in the set-theoretic sense"@en ;
+    foaf:page <https://en.wikipedia.org/wiki/Membership_function_(mathematics)> ;
     rdfs:domain :LanguageEntity ;
     rdfs:range :ArtifactEntity ;
     owl:inverseOf :elementOf .
 
 :hasEntryType a owl:DatatypeProperty ;
+    rdfs:comment "A BibTeX-style entry type for a reference"@en ;    
+    foaf:page <https://en.wikipedia.org/wiki/BibTeX> ;
     rdfs:domain :ReferenceEntity ;
     rdfs:range xsd:string .
 
 :hasInclusionRoleComment a owl:DatatypeProperty ;
+    rdfs:comment "A relevance note for including the reference into this ontology"@en ;    
+    foaf:page <https://en.wikipedia.org/wiki/Annotated_bibliography> ;
     rdfs:domain :ReferenceEntity ;
     rdfs:range xsd:string .
 
 :hasInputArtifact a owl:ObjectProperty ;
     rdfs:label "has input artifact"@en ;
     rdfs:comment "Relates a software engineering activity or software tool to an artifact kind that it typically requires or consumes as input"@en ;
+    foaf:page <https://en.wikipedia.org/wiki/Artifact_(software_development)> ;
     rdfs:domain [ a owl:Class ;
             owl:unionOf ( ce:EngineeringActivity :ToolEntity ) ] ;
     rdfs:range :ArtifactEntity .
 
 :hasJournal a owl:DatatypeProperty ;
+    rdfs:comment "A BibTeX-style journal field"@en ;    
+    foaf:page <https://en.wikipedia.org/wiki/BibTeX> ;
     rdfs:domain :ReferenceEntity ;
     rdfs:range xsd:string .
 
 :hasNumber a owl:DatatypeProperty ;
+    rdfs:comment "A BibTeX-style number field"@en ;    
+    foaf:page <https://en.wikipedia.org/wiki/BibTeX> ;
     rdfs:domain :ReferenceEntity ;
     rdfs:range xsd:string .
 
 :hasOutputArtifact a owl:ObjectProperty ;
     rdfs:label "has output artifact"@en ;
     rdfs:comment "Relates a software engineering activity or software tool to an artifact kind that it typically produces as output"@en ;
+    foaf:page <https://en.wikipedia.org/wiki/Artifact_(software_development)> ;
     rdfs:domain [ a owl:Class ;
             owl:unionOf ( ce:EngineeringActivity :ToolEntity ) ] ;
     rdfs:range :ArtifactEntity .
 
 :hasPages a owl:DatatypeProperty ;
+    rdfs:comment "A BibTeX-style pages field"@en ;    
+    foaf:page <https://en.wikipedia.org/wiki/BibTeX> ;
     rdfs:domain :ReferenceEntity ;
     rdfs:range xsd:string .
 
@@ -228,33 +268,42 @@
         owl:ObjectProperty ;
     rdfs:label "has part"@en ;
     rdfs:comment "Relates an ontology entity to another ontology entity that is a structural part or constituent of it"@en ;
+    foaf:isPrimaryTopicOf <https://en.wikipedia.org/wiki/Mereology> ;
     rdfs:domain :Entity ;
     rdfs:range :Entity ;
     rdfs:subPropertyOf :uses ;
     owl:inverseOf :isPartOf .
 
 :hasPublicationYear a owl:DatatypeProperty ;
+    rdfs:comment "A BibTeX-style field for publication year"@en ;    
+    foaf:page <https://en.wikipedia.org/wiki/BibTeX> ;
     rdfs:domain :ReferenceEntity ;
     rdfs:range xsd:gYear .
 
 :hasPublisher a owl:DatatypeProperty ;
+    rdfs:comment "A BibTeX-style field for publisher"@en ;    
+    foaf:page <https://en.wikipedia.org/wiki/BibTeX> ;
     rdfs:domain :ReferenceEntity ;
     rdfs:range xsd:string .
 
 :hasReference a owl:ObjectProperty ;
     rdfs:label "has reference"@en ;
     rdfs:comment "Relates an entity to a reference entity that documents, discusses, or supports it"@en ;
+    foaf:page <https://en.wikipedia.org/wiki/Annotated_bibliography> ;
     rdfs:domain :Entity ;
     rdfs:range :ReferenceEntity ;
     owl:inverseOf :isReferenceFor .
 
 :hasSeries a owl:DatatypeProperty ;
+    rdfs:comment "A BibTeX-style field for series"@en ;    
+    foaf:page <https://en.wikipedia.org/wiki/BibTeX> ;
     rdfs:domain :ReferenceEntity ;
     rdfs:range xsd:string .
 
 :hasSpace a owl:ObjectProperty ;
     rdfs:label "has space"@en ;
     rdfs:comment "Associates an entity with a technological space to which it characteristically belongs"@en ;
+    foaf:page <https://en.wikipedia.org/wiki/N/A> ;
     rdfs:domain :Entity ;
     rdfs:range ce:TechnologicalSpace ;
     owl:inverseOf :isSpaceOf .
@@ -262,49 +311,71 @@
 :hasSupportingLanguage a owl:ObjectProperty ;
     rdfs:label "has supporting language"@en ;
     rdfs:comment "Relates a software engineering activity to a language kind that is characteristically used to perform or express the activity"@en ;
+    foaf:page <https://en.wikipedia.org/wiki/N/A> ;
     rdfs:domain ce:EngineeringActivity ;
     rdfs:range :LanguageEntity .
 
 :hasSupportingTool a owl:ObjectProperty ;
     rdfs:label "has supporting tool"@en ;
     rdfs:comment "Relates a software engineering activity to a tool kind that characteristically supports carrying out the activity"@en ;
+    foaf:page <https://en.wikipedia.org/wiki/N/A> ;
     rdfs:domain ce:EngineeringActivity ;
     rdfs:range :ToolEntity .
 
 :hasTitle a owl:DatatypeProperty ;
+    rdfs:comment "A BibTeX-style title field"@en ;    
+    foaf:page <https://en.wikipedia.org/wiki/BibTeX> ;
     rdfs:domain :ReferenceEntity ;
     rdfs:range xsd:string .
 
 :hasTool a owl:ObjectProperty ;
     rdfs:label "has tool"@en ;
+    rdfs:comment "Relates a technological space to a kind of tool that it is concerned with"@en ;    
+    foaf:page <https://en.wikipedia.org/wiki/Programming_tool> ;
     rdfs:domain ce:TechnologicalSpace ;
     rdfs:range :ToolEntity ;
     owl:inverseOf :isToolOf .
 
 :hasURL a owl:DatatypeProperty ;
+    rdfs:comment "A BibTeX-style URL field"@en ;    
+    foaf:page <https://en.wikipedia.org/wiki/BibTeX> ;
     rdfs:domain :ReferenceEntity ;
     rdfs:range xsd:anyURI .
 
 :hasVolume a owl:DatatypeProperty ;
+    rdfs:comment "A BibTeX-style volume field"@en ;    
+    foaf:page <https://en.wikipedia.org/wiki/BibTeX> ;
     rdfs:domain :ReferenceEntity ;
     rdfs:range xsd:string .
 
 :isAreaOf a owl:ObjectProperty ;
     rdfs:label "is area of"@en ;
     rdfs:comment "Relates a subject area to an entity for which it is an important area of interest"@en ;
+    foaf:page <https://en.wikipedia.org/wiki/Academic_discipline> ;
     rdfs:domain ce:SubjectArea ;
     rdfs:range :Entity ;
     owl:inverseOf :hasArea .
 
 :isArtifactOf a owl:ObjectProperty ;
     rdfs:label "is artifact of"@en ;
+    rdfs:comment "Relates an artifact to its technological space"@en ;    
+    foaf:page <https://en.wikipedia.org/wiki/Artifact_(software_development)> ;
     rdfs:domain :ArtifactEntity ;
     rdfs:range ce:TechnologicalSpace ;
     owl:inverseOf :hasArtifact .
 
+:isDefinedBy a owl:ObjectProperty ;
+    rdfs:label "is defined by"@en ;
+    rdfs:comment "Relates a language to an artifact in the sense of a definition (specification)"@en ;
+    foaf:page <https://en.wikipedia.org/wiki/Programming_language_specification> ;
+    rdfs:domain :LanguageEntity ;
+    rdfs:range :ArtifactEntity ;
+    owl:inverseOf :defines .
+
 :isExtendedBy a owl:ObjectProperty ;
     rdfs:label "is extended by"@en ;
     rdfs:comment "Relates a software language to another software language that extends or generalizes it"@en ;
+    foaf:page <https://en.wikipedia.org/wiki/N/A> ;
     rdfs:domain :SoftwareLanguage ;
     rdfs:range :SoftwareLanguage ;
     owl:inverseOf :extends .
@@ -314,6 +385,7 @@
         owl:ObjectProperty ;
     rdfs:label "is part of"@en ;
     rdfs:comment "Relates an ontology entity to another ontology entity of which it is a structural part or constituent"@en ;
+    foaf:isPrimaryTopicOf <https://en.wikipedia.org/wiki/Mereology> ;
     rdfs:domain :Entity ;
     rdfs:range :Entity ;
     rdfs:subPropertyOf :isUsedBy ;
@@ -322,6 +394,7 @@
 :isProcessedBy a owl:ObjectProperty ;
     rdfs:label "is processed by"@en ;
     rdfs:comment "Relates an artifact entity to a tool entity that characteristically processes it"@en ;
+    foaf:page <https://en.wikipedia.org/wiki/N/A> ;
     rdfs:domain :ArtifactEntity ;
     rdfs:range :ToolEntity ;
     owl:inverseOf :processes .
@@ -329,6 +402,7 @@
 :isReferenceFor a owl:ObjectProperty ;
     rdfs:label "is reference for"@en ;
     rdfs:comment "Relates a reference entity to an entity that it documents, discusses, or supports"@en ;
+    foaf:page <https://en.wikipedia.org/wiki/Annotated_bibliography> ;
     rdfs:domain :ReferenceEntity ;
     rdfs:range :Entity ;
     owl:inverseOf :hasReference .
@@ -336,6 +410,7 @@
 :isServedBy a owl:ObjectProperty ;
     rdfs:label "is served by"@en ;
     rdfs:comment "Relates a methodological approach to an entity that serves, realizes, supports, or instantiates it in an important way"@en ;
+    foaf:page <https://en.wikipedia.org/wiki/N/A> ;
     rdfs:domain fe:MethodologicalApproach ;
     rdfs:range :Entity ;
     owl:inverseOf :serves .
@@ -343,6 +418,7 @@
 :isSpaceOf a owl:ObjectProperty ;
     rdfs:label "is space of"@en ;
     rdfs:comment "Relates a technological space to an entity that characteristically belongs to it"@en ;
+    foaf:page <https://en.wikipedia.org/wiki/N/A> ;
     rdfs:domain ce:TechnologicalSpace ;
     rdfs:range :Entity ;
     owl:inverseOf :hasSpace .
@@ -350,6 +426,7 @@
 :isSpecifiedBy a owl:ObjectProperty ;
     rdfs:label "is specified by"@en ;
     rdfs:comment "Relates an entity to a methodological approach used to formally specify or define its behavior or meaning"@en ;
+    foaf:page <https://en.wikipedia.org/wiki/N/A> ;
     rdfs:domain :FoundationalEntity ;
     rdfs:range fe:MethodologicalApproach ;
     owl:inverseOf :specifies .
@@ -357,12 +434,15 @@
 :isSupportedBy a owl:ObjectProperty ;
     rdfs:label "is supported by"@en ;
     rdfs:comment "Relates a language entity to a tool entity that supports it"@en ;
+    foaf:page <https://en.wikipedia.org/wiki/N/A> ;
     rdfs:domain :LanguageEntity ;
     rdfs:range :ToolEntity ;
     owl:inverseOf :supports .
 
 :isToolOf a owl:ObjectProperty ;
     rdfs:label "is tool of"@en ;
+    rdfs:comment "Relates a tool to its technological space"@en ;    
+    foaf:page <https://en.wikipedia.org/wiki/Programming_tool> ;
     rdfs:domain :ToolEntity ;
     rdfs:range ce:TechnologicalSpace ;
     owl:inverseOf :hasTool .
@@ -370,17 +450,20 @@
 :isUsedBy a owl:ObjectProperty ;
     rdfs:label "is used by"@en ;
     rdfs:comment "Relates an ontology entity to another ontology entity that uses it conceptually, methodologically, or technically"@en ;
+    foaf:page <https://en.wikipedia.org/wiki/N/A> ;
     rdfs:domain :Entity ;
     rdfs:range :Entity ;
     owl:inverseOf :uses .
 
 :metamodelingPolicy a owl:AnnotationProperty ;
     rdfs:label "Metamodeling policy"@en ;
-    rdfs:comment "Documents the ontology-wide expectation for explicit punning-based typing of classes and individuals with the corresponding Entity subclass"@en .
+    rdfs:comment "Documents ontology-wide expectations for explicit punning-based typing of classes and individuals with the corresponding Entity subclass"@en ;
+    foaf:page <https://en.wikipedia.org/wiki/Guideline> .
 
 :processes a owl:ObjectProperty ;
     rdfs:label "processes"@en ;
     rdfs:comment "Relates a tool entity to an artifact entity that it characteristically processes"@en ;
+    foaf:page <https://en.wikipedia.org/wiki/N/A> ;
     rdfs:domain :ToolEntity ;
     rdfs:range :ArtifactEntity ;
     owl:inverseOf :isProcessedBy .
@@ -388,6 +471,7 @@
 :serves a owl:ObjectProperty ;
     rdfs:label "serves"@en ;
     rdfs:comment "Relates an entity to a methodological approach that it serves, realizes, supports, or instantiates in an important way"@en ;
+    foaf:page <https://en.wikipedia.org/wiki/N/A> ;
     rdfs:domain :Entity ;
     rdfs:range fe:MethodologicalApproach ;
     owl:inverseOf :isServedBy .
@@ -395,6 +479,7 @@
 :specifies a owl:ObjectProperty ;
     rdfs:label "specifies"@en ;
     rdfs:comment "Relates a methodological approach to an entity whose behavior or meaning it is used to formally specify or define"@en ;
+    foaf:page <https://en.wikipedia.org/wiki/N/A> ;
     rdfs:domain fe:MethodologicalApproach ;
     rdfs:range :FoundationalEntity ;
     owl:inverseOf :isSpecifiedBy .
@@ -402,12 +487,14 @@
 :suggestion a owl:DatatypeProperty ;
     rdfs:label "suggestion"@en ;
     rdfs:comment "Records a suggested resolution or improvement for an issue"@en ;
+    foaf:page <https://en.wikipedia.org/wiki/Issue_tracking_system> ;
     rdfs:domain :IssueEntity ;
     rdfs:range xsd:string .
 
 :supports a owl:ObjectProperty ;
     rdfs:label "supports"@en ;
     rdfs:comment "Relates a tool entity to a language entity that it supports"@en ;
+    foaf:page <https://en.wikipedia.org/wiki/N/A> ;
     rdfs:domain :ToolEntity ;
     rdfs:range :LanguageEntity ;
     owl:inverseOf :isSupportedBy .
@@ -415,6 +502,7 @@
 :uses a owl:ObjectProperty ;
     rdfs:label "uses"@en ;
     rdfs:comment "Relates an ontology entity to another ontology entity that it uses conceptually, methodologically, or technically"@en ;
+    foaf:page <https://en.wikipedia.org/wiki/N/A> ;
     rdfs:domain :Entity ;
     rdfs:range :Entity ;
     owl:inverseOf :isUsedBy .
@@ -422,22 +510,26 @@
 :object a rdf:Property ;
     rdfs:label "object"@en ;
     rdfs:comment "Identifies the object constituent of an issue when the issue concerns a particular assertion; this property designates object role rather than the overall issue target"@en ;
+    foaf:page <https://en.wikipedia.org/wiki/Issue_tracking_system> ;
     rdfs:domain :IssueEntity ;
     rdfs:subPropertyOf rdf:object .
 
 :predicate a rdf:Property ;
     rdfs:label "predicate"@en ;
     rdfs:comment "Identifies the predicate constituent of an issue when the issue concerns a particular assertion; this property designates predicate role rather than the overall issue target"@en ;
+    foaf:page <https://en.wikipedia.org/wiki/Issue_tracking_system> ;
     rdfs:domain :IssueEntity ;
     rdfs:subPropertyOf rdf:predicate .
 
 :subject a rdf:Property ;
     rdfs:label "subject"@en ;
     rdfs:comment "Identifies the subject constituent of an issue when the issue concerns a particular assertion; this property designates subject role rather than the overall issue target"@en ;
+    foaf:page <https://en.wikipedia.org/wiki/Issue_tracking_system> ;
     rdfs:domain :IssueEntity ;
     rdfs:subPropertyOf rdf:subject .
 
 :target a rdf:Property ;
     rdfs:label "target"@en ;
     rdfs:comment "Identifies the primary resource that an issue is about, such as a reviewed resource or an ontology/module addressed as a whole; assertion-level issues are instead designated through subject, predicate, and object"@en ;
+    foaf:page <https://en.wikipedia.org/wiki/Issue_tracking_system> ;
     rdfs:domain :IssueEntity .
