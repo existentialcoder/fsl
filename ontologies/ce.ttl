@@ -786,7 +786,7 @@
     rdfs:label "Supports"@en ;
     rdfs:domain pe:ProgrammingLanguage ;
     rdfs:range :LanguageConcept ;
-    owl:propertyChainAxiom [ ] .
+    owl:propertyChainAxiom .
 
 :Abstraction a :AbstractionConcept,
         tbox:ConceptualEntity ;
