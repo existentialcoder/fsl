@@ -2,35 +2,104 @@
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix tbox: <http://www.softlang.org/ontologies/tbox#> .
+@prefix ae: <http://www.softlang.org/ontologies/ae#> .
+@prefix fe: <http://www.softlang.org/ontologies/fe#> .
+@prefix ce: <http://www.softlang.org/ontologies/ce#> .
+@prefix le: <http://www.softlang.org/ontologies/le#> .
+@prefix re: <http://www.softlang.org/ontologies/re#> .
 
 <http://www.softlang.org/ontologies/ie> a owl:Ontology ;
-    rdfs:comment "Sub-ontology / ABox for issue entities. At this stage, the content is illustrative only. Resource-level issues use tbox:target. Assertion-level issues use tbox:subject, tbox:predicate, and tbox:object to designate the roles of resources in the reviewed assertion."@en ;
+    rdfs:comment "Sub-ontology / ABox for issue entities. Resource-level issues use tbox:target. Assertion-level issues use tbox:subject, tbox:predicate, and tbox:object to designate the roles of resources in the reviewed assertion."@en ;
     owl:imports <http://www.softlang.org/ontologies/tbox> .
 
-:IssueOnAssertionObjectRoleExample a tbox:IssueEntity ;
-    rdfs:label "Illustrative issue on an assertion with an explicit object role"@en ;
-    tbox:critique "Illustrative example only: the reviewed assertion may merit reconsideration with focus on its object constituent."@en ;
-    tbox:object tbox:IssueEntity ;
-    tbox:predicate rdfs:range ;
-    tbox:subject tbox:issue ;
-    tbox:suggestion "No ontology change requested; this example exists only to illustrate that tbox:subject, tbox:predicate, and tbox:object designate roles within an assertion rather than the overall issue target."@en .
+:MigrateToBibTeXIssue a tbox:IssueEntity ;
+    tbox:critique "The use of 'reified' BibTeX references -- in the form of designated assertions -- is a bit clumsy."@en ;
+    tbox:suggestion "Let us use BibTeX directly instead. To this end, put all references from the module re into a new BibTeX file fsl.bib. In order to avoid transformation mismatches, the BibTeX resources should be directly retrieved again and compared with what's currently in module re. The entire module re and the class tbox:ReferenceEntity should then be removed. There are also various properties with domain tbox:ReferenceEntity -- their declarations in the module tbox also need to be removed. The uses of tbox:hasInclusionRoleComment should inform what is subsequently called 'one-sentence reason for inclusion'. The propery declaration hasReference and its uses should be changed so that the new name is hasBibTeX instead and objects of hasBibTeX assertions should be strings for the BibTeX keys for the corresponding entries. The BibTeX file fsl.bib must be accompanied with an inline commment to persist the following guideline: This file collects literature references that may be used to annotate the FSL ontology. The expectation is that entries always include a correct doi field (for the DOI of the paper) and, if possible, also a url field for (preferably free) access to the paper in PDF format. Ontology entites can link to BibTeX entries by means of a property tbox:hasBibTeX. When adding an entry, a short one-sentence reason for inclusion should be placed in the note field of the entry."@en ;
+    tbox:target <http://www.softlang.org/ontologies/re> ;
+    tbox:target tbox:ReferenceEntity .
 
-:IssueOnAssertionSubjectRoleExample a tbox:IssueEntity ;
-    rdfs:label "Illustrative issue on an assertion with an explicit subject role"@en ;
-    tbox:critique "Illustrative example only: the assertion may deserve review or further justification."@en ;
-    tbox:object tbox:Entity ;
-    tbox:predicate rdfs:subClassOf ;
-    tbox:subject tbox:IssueEntity ;
-    tbox:suggestion "No ontology change requested; this example exists only to illustrate an assertion-level issue where the same resource appears specifically in subject role, unlike tbox:target which addresses a resource directly."@en .
-
-:IssueOnModuleByTargetExample a tbox:IssueEntity ;
-    rdfs:label "Illustrative issue on a module via target"@en ;
-    tbox:critique "Illustrative example only: the module documentation might deserve review as a whole."@en ;
-    tbox:suggestion "No ontology change requested; this example exists only to illustrate that a whole module can be addressed via its ontology IRI as tbox:target."@en ;
+:LinkingPolicyIssue a tbox:IssueEntity ;
+    tbox:critique "We should better document our intentions for linking to Wikipedia."@en ;
+    tbox:suggestion "Introduce another annotation property linkingPolicy in tbox similar to the existing ones like metamodelingPolicy. Attach a linking policy to the tbox ontology which should essentially read like this: All important classes and individuals should link to Wikipedia. Use foaf:isPrimaryTopicOf where possible. Use foaf:page otherwise. Link to https://en.wikipedia.org/wiki/N/A to express that no useful page could be determined."@en ;
     tbox:target <http://www.softlang.org/ontologies/tbox> .
 
-:IssueOnResourceByTargetExample a tbox:IssueEntity ;
-    rdfs:label "Illustrative issue on a resource via target"@en ;
-    tbox:critique "Illustrative example only: the resource might need a clearer comment or label."@en ;
-    tbox:suggestion "No ontology change requested; this example exists only to illustrate a resource-level issue addressed via tbox:target."@en ;
-    tbox:target tbox:IssueEntity .
+:MissingPoliciesIssue a tbox:IssueEntity ;
+    tbox:critique "The various subontologies should also have policies like tbox does already."@en ;
+    tbox:suggestion "The targeted ontologies should get a commenting policy, a formatting policy, a metamodeling policy, and a linking policy -- just like in tbox. The actual policy should be nothing but a simple text like this: See http://www.softlang.org/ontologies/tbox -- the same policy applies here."@en ;
+    tbox:target <http://www.softlang.org/ontologies/ae> ;
+    tbox:target <http://www.softlang.org/ontologies/ce> ;
+    tbox:target <http://www.softlang.org/ontologies/fe> ;
+    tbox:target <http://www.softlang.org/ontologies/le> ;
+    tbox:target <http://www.softlang.org/ontologies/ie> ;
+    tbox:target <http://www.softlang.org/ontologies/pe> ;
+    tbox:target <http://www.softlang.org/ontologies/re> ;
+    tbox:target <http://www.softlang.org/ontologies/te> ;
+    tbox:target <http://www.softlang.org/ontologies/fsl> .
+
+:tboxDependsOnFEIssue a tbox:IssueEntity ;
+    tbox:critique "tbox already refers to namespace fe."@en ;
+    tbox:suggestion "Move the class with the name of the issue's target to the module tbox (including adjustment of all references to it). As a result, the prefix declaration for fe in tbox can and should be removed."@en ;
+    tbox:target fe:MethodologicalApproach .
+
+:tboxDependsOnCEIssue a tbox:IssueEntity ;
+    tbox:critique "tbox already refers to namespace ce."@en ;
+    tbox:suggestion "Move the classes with the names of the issue's targets to the module tbox (including adjustment of all references to them). As a result, the prefix declaration for ce in tbox can and should be removed."@en ;
+    tbox:target ce:SubjectArea ;
+    tbox:target ce:TechnologicalSpace ;
+    tbox:target ce:EngineeringActivity .
+
+:PropertyGraphIssue1 a tbox:IssueEntity ;
+    tbox:critique "The class hierarchy isn't right here."@en ;
+    tbox:suggestion "Make le:PropertyGraphDataModelLanguage a subclass of le:SemanticDataModelLanguage (instead of tbox:SoftwareLanguage)."@en ;
+    tbox:target le:PropertyGraphDataModelLanguage .
+
+:PropertyGraphIssue2 a tbox:IssueEntity ;
+    tbox:critique "The class hierarchy isn't right here."@en ;
+    tbox:suggestion "The issue's targets are two classes that should become subclasses of a new class ae:SemanticDataArtifact (instead of being subclasses of tbox:SoftwareArtifact). The new class should become a subclass of tbox:SoftwareArtifact."@en ;
+    tbox:target ae:RDFGraphArtifact ;
+    tbox:target ae:PropertyGraphArtifact .
+
+:MakePropertiesEntitiesIssue a tbox:IssueEntity ;
+    tbox:critique "We would like to treat property declarations like other entities in the ontology, for example, when it comes to participating in some relations."@en ;
+    tbox:suggestion "Introduce tbox:PropertyEntity as a new subclass of tbox:Entity. Add tbox:PropertyEntity as a type to all property declarations appearing in the module tbox; we only care about properties declared as owl:ObjectProperty, owl:DatatypeProperty, and owl:AnnotationProperty."@en ;
+    tbox:target <http://www.softlang.org/ontologies/tbox> .
+
+:ConformanceLiteratureIssue a tbox:IssueEntity ;
+    tbox:critique "As we were struggling to name the inverse of conformsTo, let's keep track of some useful literature in this context."@en ;
+    tbox:suggestion "Look up BibTeX entries for the following DOIs 10.1109/MS.2003.1231149, 10.1007/978-3-319-42061-5_6, 10.1016/j.cl.2016.09.001, 10.1007/s00165-014-0307-x, 10.4230/DagSemProc.04101.7 and add them to the new fsl.bib file which was initiated by another issue; follow the guideline given for fsl.bib. In particular, include a one-sentence reason for inclusion for each paper which, in the scope of the present issue, should briefly say how each paper provides insight into related notions of conformance, classification, or typing. Also, make sure that these new references are linked up with tbox:conformsTo by means of tbox:hasBibTeX (which is the new property created by another issue)."@en ;
+    tbox:target tbox:conformsTo .
+
+:LanguagesDisjointnessIssue a tbox:IssueEntity ;
+    tbox:critique "We assume that the immediate subclasses of tbox:SoftwareLanguage are mostly disjoint. Let us single out the following set of exceptions: le:ConstraintLanguage, le:QueryLanguage, le:TransformationLanguage, le:DataManipulationLanguage, le:DataDefinitionLanguage. All remaining immediate subclasses of tbox:SoftwareLanguage are disjoint and they are also disjoint with the union over the exceptions."@en ;
+    tbox:suggestion "Use owl:AllDisjointClasses and owl:unionOf, where possible, and the more verbose owl:disjointWith, where necessary, to formalize the assumption in the module le."@en ;
+    tbox:target tbox:SoftwareLanguage .
+
+:ToolsDisjointnessIssue a tbox:IssueEntity ;
+    tbox:critique "We assume that there is some disjointness among the immediate subclasses of tbox:SoftwareTool. In particular, we assume: te:JSONProcessor and te:XMLProcessor are disjoint; te:Reasoner, te:ParserGenerator, te:ProofAssistant, te:RefactoringTool, and te:RequirementsTool are disjoint."@en ;
+    tbox:suggestion "Use owl:AllDisjointClasses, owl:unionOf, or owl:disjointWith, as it fits, to formalize the assumption in the module te."@en ;
+    tbox:target tbox:SoftwareTool .
+
+:ArtifactsDisjointnessIssue a tbox:IssueEntity ;
+    tbox:critique "We assume that some subclasses of tbox:SoftwareArtifact are disjoint. In particular, we assume: ae:XMLDocumentArtifact and ae:JSONDocumentArtifact are disjoint; ae:XMLSchemaArtifact and ae:JSONSchemaArtifact are disjoint; ae:GrammarArtifact and ae:MetamodelArtifact are disjoint; ae:GrammarOfGrammarsArtifact and ae:MetamodelArtifact are disjoint; ae:SemanticDataArtifact and ae:ModelArtifact and ae:ProgramArtifact are disjoint."@en ;
+    tbox:suggestion "Use owl:AllDisjointClasses, owl:unionOf, or owl:disjointWith, as it fits, to formalize the assumption in the module ae."@en ;
+    tbox:target tbox:SoftwareArtifact .
+
+:ConceptsDisjointnessIssue a tbox:IssueEntity ;
+    tbox:critique "We assume that all immediate subclasses of tbox:ConceptualEntity are disjoint."@en ;
+    tbox:suggestion "Use owl:AllDisjointClasses to formalize the assumption in the module ce."@en ;
+    tbox:target tbox:ConceptualEntity .
+
+:FoundationalToFormalIssue a tbox:IssueEntity ;
+    tbox:critique "tbox:FoundationalEntity is a bit misleading because all of FSL is about foundations."@en ;
+    tbox:suggestion "Rename to tbox:FormalEntity; also adjust the label accordingly."@en ;
+    tbox:target tbox:FoundationalEntity .
+
+:FormalEntitiesDisjointnessIssue a tbox:IssueEntity ;
+    tbox:critique "We assume that there is some disjointness among the immediate subclasses of tbox:FormalEntity. In particular, we assume: fe:ComputationalProblem, fe:DataStructure, fe:MathematicalStructure, fe:FormalObject, and the union of fe:FormalSystem, fe:ModelOfComputation, and fe:Theory are disjoint."@en ;
+    tbox:suggestion "Make sure :FoundationalToFormalIssue was resolved before addressing the present issue. Use owl:AllDisjointClasses, owl:unionOf, or owl:disjointWith, as it fits, to formalize the assumption in the module fe."@en ;
+    tbox:target tbox:FormalEntity .
+
+:FormalSystemsDisjointnessIssue a tbox:IssueEntity ;
+    tbox:critique "We assume that all immediate subclasses of fe:FormalSystem are disjoint."@en ;
+    tbox:suggestion "Use owl:AllDisjointClasses to formalize the assumption in the module fe."@en ;
+    tbox:target fe:FormalSystem .
