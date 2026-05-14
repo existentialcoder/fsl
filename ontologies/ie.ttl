@@ -2,6 +2,12 @@
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix tbox: <http://www.softlang.org/ontologies/tbox#> .
+@prefix ae: <http://www.softlang.org/ontologies/ae#> .
+@prefix ce: <http://www.softlang.org/ontologies/ce#> .
+@prefix fe: <http://www.softlang.org/ontologies/fe#> .
+@prefix le: <http://www.softlang.org/ontologies/le#> .
+@prefix pe: <http://www.softlang.org/ontologies/pe#> .
+@prefix te: <http://www.softlang.org/ontologies/te#> .
 
 <http://www.softlang.org/ontologies/ie> a owl:Ontology ;
     tbox:commentingPolicy "See http://www.softlang.org/ontologies/tbox -- the same policy applies here."@en ;
@@ -10,3 +16,41 @@
     tbox:metamodelingPolicy "See http://www.softlang.org/ontologies/tbox -- the same policy applies here."@en ;
     rdfs:comment "Sub-ontology / ABox for issue entities. Resource-level issues use tbox:target. Assertion-level issues use tbox:subject, tbox:predicate, and tbox:object to designate the roles of resources in the reviewed assertion."@en ;
     owl:imports <http://www.softlang.org/ontologies/tbox> .
+
+:SupportsNameClashIssue a tbox:IssueEntity ;
+    tbox:target tbox:supports ;
+    tbox:target ce:supports ;
+    tbox:critique "There are two different types of 'supports' in use. tbox:supports relates tools to languages, whereas ce:supports relates languages to concepts. They cannot be usefully combined under a shared abstraction, unless we are willing to have longer property names that, perhaps, include the range into the property name for disambiguation."@en ;
+    tbox:suggestion "Rename tbox:supports to tbox:targets, since a tool may be said to target a language."@en .
+
+:LanguageConceptsNamespaceIssue a tbox:IssueEntity ;
+    tbox:target ce:LanguageConcept ;
+    tbox:target ce:CompositeConcept ;
+    tbox:target ce:LanguageSupportKind ;
+    tbox:target ce:LanguageSupportAssertion ;
+    tbox:target ce:LanguageConceptApplicability ;
+    tbox:target ce:ImplementationMechanismConcept ;
+    tbox:target ce:supports ;
+    tbox:target ce:nativelySupports ;
+    tbox:target ce:standardlySupports ;
+    tbox:target ce:assertedForConcept ;
+    tbox:target ce:assertedForLanguage ;
+    tbox:target ce:hasDominantForm ;
+    tbox:target ce:hasPrimaryMechanism ;
+    tbox:target ce:hasApplicability ;
+    tbox:target ce:hasComponent ;
+    tbox:target ce:hasPrimaryComponent ;
+    tbox:target ce:hasSecondaryComponent ;
+    tbox:target ce:hasSupportKind ;
+    tbox:critique "Several schema-level language-concept classes and properties are currently declared in the ce module, although they belong to the shared tbox vocabulary. This was previously considered acceptable, but the module boundary should now be cleaned up."@en ;
+    tbox:suggestion "Move all targeted class and property declarations from ce to tbox, change their namespace from ce to tbox, and update all references accordingly."@en ;
+    tbox:resolveAfter :SupportsNameClashIssue .
+
+:ModuleImportIssue a tbox:IssueEntity ;
+    tbox:target <http://www.softlang.org/ontologies/ae> ;
+    tbox:target <http://www.softlang.org/ontologies/le> ;
+    tbox:target <http://www.softlang.org/ontologies/pe> ;
+    tbox:target <http://www.softlang.org/ontologies/te> ;
+    tbox:critique "Ideally, all modules other than tbox and fsl should only import tbox. This is violated for no good reason."@en ;
+    tbox:suggestion "Remove the violating imports from the targeted modules."@en ;
+    tbox:resolveAfter :LanguageConceptsNamespaceIssue .

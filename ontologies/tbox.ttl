@@ -148,7 +148,7 @@
     rdfs:comment "Describes the problem, concern, or critique expressed by an issue"@en ;
     foaf:page <https://en.wikipedia.org/wiki/Issue_tracking_system> ;
     rdfs:domain :IssueEntity ;
-    rdfs:range xsd:string .
+    rdfs:range rdf:langString .
 
 :defines a owl:ObjectProperty,
         :PropertyEntity ;
@@ -462,7 +462,7 @@
     rdfs:comment "Records a suggested resolution or improvement for an issue"@en ;
     foaf:page <https://en.wikipedia.org/wiki/Issue_tracking_system> ;
     rdfs:domain :IssueEntity ;
-    rdfs:range xsd:string .
+    rdfs:range rdf:langString .
 
 :supports a owl:ObjectProperty,
         :PropertyEntity ;
@@ -508,6 +508,14 @@
     rdfs:comment "Identifies the primary resource that an issue is about, such as a reviewed resource or an ontology/module addressed as a whole; assertion-level issues are instead designated through subject, predicate, and object"@en ;
     foaf:page <https://en.wikipedia.org/wiki/Issue_tracking_system> ;
     rdfs:domain :IssueEntity .
+
+:resolveAfter a owl:ObjectProperty,
+        :PropertyEntity ;
+    rdfs:label "resolve after"@en ;
+    rdfs:comment "States that an issue needs to be resolved after another issue"@en ;
+    foaf:page <https://en.wikipedia.org/wiki/Issue_tracking_system> ;
+    rdfs:domain :IssueEntity ;
+    rdfs:range :IssueEntity.
 
 :conformsTo :hasBibTeX "AtkinsonKuehne2003MetamodelingFoundation",
         "AtkinsonGerbig2016OntologicalClassification",
