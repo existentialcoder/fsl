@@ -1,0 +1,6 @@
+FROM python:3.13-slim
+RUN apt-get update && apt-get install -y --no-install-recommends \
+        git build-essential libleveldb-dev default-jre-headless \
+    && rm -rf /var/lib/apt/lists/*
+RUN pip install --no-cache-dir \
+    "saref-pypeline[check] @ git+https://labs.etsi.org/rep/saref/saref-pypeline.git"
